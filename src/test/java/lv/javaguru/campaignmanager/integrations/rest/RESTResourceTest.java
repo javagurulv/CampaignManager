@@ -5,6 +5,7 @@ import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.jaxrs.JAXRSContract;
 import lv.javaguru.campaignmanager.config.Application;
+import lv.javaguru.campaignmanager.integrations.rest.api.CampaignGroupResource;
 import lv.javaguru.campaignmanager.integrations.rest.api.ClientResource;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -24,6 +25,7 @@ public class RESTResourceTest {
     private int port;
 
     protected ClientResource clientResource;
+    protected CampaignGroupResource campaignGroupResource;
 
 
     @Before
@@ -35,6 +37,13 @@ public class RESTResourceTest {
                 .decoder(new JacksonDecoder())
                 .contract(new JAXRSContract())
                 .target(ClientResource.class, url);
+
+        campaignGroupResource = Feign.builder()
+                .encoder(new JacksonEncoder())
+                .decoder(new JacksonDecoder())
+                .contract(new JAXRSContract())
+                .target(CampaignGroupResource.class, url);
+
     }
 
 }

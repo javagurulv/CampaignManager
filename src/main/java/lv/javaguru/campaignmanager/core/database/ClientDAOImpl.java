@@ -1,6 +1,5 @@
-package lv.javaguru.campaignmanager.core.database.clients;
+package lv.javaguru.campaignmanager.core.database;
 
-import lv.javaguru.campaignmanager.core.database.ClientDAO;
 import lv.javaguru.campaignmanager.core.domain.Client;
 import org.springframework.stereotype.Component;
 

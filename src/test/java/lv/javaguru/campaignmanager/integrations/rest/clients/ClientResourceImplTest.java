@@ -5,7 +5,7 @@ import lv.javaguru.campaignmanager.integrations.rest.dto.ClientDTO;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 
-import static lv.javaguru.campaignmanager.integrations.rest.dto.ClientDTOBuilder.createClientDTO;
+import static lv.javaguru.campaignmanager.integrations.rest.dto.builders.ClientDTOBuilder.createClientDTO;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;

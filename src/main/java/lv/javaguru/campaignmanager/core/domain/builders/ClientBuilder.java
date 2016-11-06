@@ -1,4 +1,6 @@
-package lv.javaguru.campaignmanager.core.domain;
+package lv.javaguru.campaignmanager.core.domain.builders;
+
+import lv.javaguru.campaignmanager.core.domain.Client;
 
 public class ClientBuilder {
 

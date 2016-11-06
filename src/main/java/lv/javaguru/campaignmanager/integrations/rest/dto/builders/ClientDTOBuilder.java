@@ -1,4 +1,6 @@
-package lv.javaguru.campaignmanager.integrations.rest.dto;
+package lv.javaguru.campaignmanager.integrations.rest.dto.builders;
+
+import lv.javaguru.campaignmanager.integrations.rest.dto.ClientDTO;
 
 public class ClientDTOBuilder {
 

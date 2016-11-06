@@ -4,7 +4,7 @@ import lv.javaguru.campaignmanager.core.domain.Client;
 import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
 
-import static lv.javaguru.campaignmanager.core.domain.ClientBuilder.createClient;
+import static lv.javaguru.campaignmanager.core.domain.builders.ClientBuilder.createClient;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 

@@ -5,7 +5,7 @@ import lv.javaguru.campaignmanager.core.domain.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.campaignmanager.core.domain.ClientBuilder.createClient;
+import static lv.javaguru.campaignmanager.core.domain.builders.ClientBuilder.createClient;
 
 @Component
 class ClientFactoryImpl implements ClientFactory {
