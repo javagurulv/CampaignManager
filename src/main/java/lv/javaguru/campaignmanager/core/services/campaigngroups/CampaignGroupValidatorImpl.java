@@ -5,6 +5,7 @@ import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import static org.apache.commons.lang.StringUtils.isEmpty;
@@ -15,13 +16,16 @@ class CampaignGroupValidatorImpl implements CampaignGroupValidator {
     @Autowired private CampaignGroupDAO campaignGroupDAO;
 
     @Override
-    public void validate(String title) {
-        validateTitle(title);
-    }
-
-    private void validateTitle(String title) {
+    public void validateOnCreate(String title) {
         checkTitleNotEmpty(title);
         checkCampaignGroupWithSameTitle(title);
+    }
+
+    @Override
+    public void validateOnEdit(CampaignGroup campaignGroup,
+                               String newTitle) {
+        checkTitleNotEmpty(newTitle);
+        checkCampaignGroupWithSameTitle(campaignGroup, newTitle);
     }
 
     private void checkTitleNotEmpty(String title) {
@@ -34,6 +38,17 @@ class CampaignGroupValidatorImpl implements CampaignGroupValidator {
         Optional<CampaignGroup> campaignGroup = campaignGroupDAO.findByTitle(title);
         if (campaignGroup.isPresent()) {
             throw new IllegalArgumentException("Campaign Group with same title already exist");
+        }
+    }
+
+    private void checkCampaignGroupWithSameTitle(CampaignGroup campaignGroup,
+                                                 String newTitle) {
+        Optional<CampaignGroup> campaignGroupOpt = campaignGroupDAO.findByTitle(newTitle);
+        if (campaignGroupOpt.isPresent()) {
+            CampaignGroup groupWithSameTitle = campaignGroupOpt.get();
+            if (!Objects.equals(campaignGroup.getId(), groupWithSameTitle.getId())) {
+                throw new IllegalArgumentException("Campaign Group with same title already exist");
+            }
         }
     }
 

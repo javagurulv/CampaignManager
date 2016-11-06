@@ -32,7 +32,7 @@ public class CampaignGroupFactoryImplTest {
     @Test
     public void shouldValidate() {
         factory.create(TITLE);
-        verify(validator).validate(TITLE);
+        verify(validator).validateOnCreate(TITLE);
     }
 
     @Test

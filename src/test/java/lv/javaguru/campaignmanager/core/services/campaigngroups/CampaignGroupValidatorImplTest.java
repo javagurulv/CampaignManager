@@ -30,14 +30,14 @@ public class CampaignGroupValidatorImplTest {
     public void shouldThrowExceptionWhenTitleIsNull() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group title must be specified");
-        validator.validate(null);
+        validator.validateOnCreate(null);
     }
 
     @Test
     public void shouldThrowExceptionWhenTitleIsBlank() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group title must be specified");
-        validator.validate("");
+        validator.validateOnCreate("");
     }
 
     @Test
@@ -46,13 +46,13 @@ public class CampaignGroupValidatorImplTest {
                 .when(campaignGroupDAO).findByTitle(TITLE);
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group with same title already exist");
-        validator.validate(TITLE);
+        validator.validateOnCreate(TITLE);
     }
 
     @Test
     public void shouldSucceed() {
         doReturn(Optional.empty()).when(campaignGroupDAO).findByTitle(TITLE);
-        validator.validate(TITLE);
+        validator.validateOnCreate(TITLE);
     }
 
 }
