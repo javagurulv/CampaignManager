@@ -1,0 +1,12 @@
+1) Move to Gradle
+
+2) Create multi project build:
+    shared-api
+    core
+    rest-api
+    acceptance-tests
+
+3) Introduce acceptance tests with Cucumber
+
+4) Integrate Spring DI to acceptance test scenarios
+
