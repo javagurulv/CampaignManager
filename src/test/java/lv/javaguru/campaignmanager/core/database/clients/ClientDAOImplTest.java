@@ -28,7 +28,7 @@ public class ClientDAOImplTest extends DatabaseHibernateTest {
                 .withLogin("login")
                 .withPassword("password").build();
         clientDAO.create(client);
-        Client clientFromDb = clientDAO.getById(client.getId());
+        Client clientFromDb = clientDAO.getRequired(client.getId());
         assertThat(clientFromDb, is(notNullValue()));
     }
 

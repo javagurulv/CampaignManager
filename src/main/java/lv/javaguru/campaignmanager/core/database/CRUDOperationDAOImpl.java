@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
-import java.util.List;
+import java.util.Optional;
 
 abstract class CRUDOperationDAOImpl<E, K extends Serializable>
         implements CRUDOperationDAO<E, K> {
@@ -33,8 +33,9 @@ abstract class CRUDOperationDAOImpl<E, K extends Serializable>
     }
 
     @Override
-    public E getById(K key) {
-        return (E) getCurrentSession().get(daoType, key);
+    public Optional<E> getById(K key) {
+        E e = (E) getCurrentSession().get(daoType, key);
+        return Optional.ofNullable(e);
     }
 
     @Override
@@ -54,11 +55,6 @@ abstract class CRUDOperationDAOImpl<E, K extends Serializable>
     @Override
     public void delete(E entity) {
         getCurrentSession().delete(entity);
-    }
-
-    @Override
-    public List<E> getAll() {
-        return getCurrentSession().createCriteria(daoType).list();
     }
 
 }

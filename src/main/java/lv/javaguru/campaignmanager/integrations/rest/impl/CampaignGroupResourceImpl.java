@@ -2,6 +2,8 @@ package lv.javaguru.campaignmanager.integrations.rest.impl;
 
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGroupCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGroupResult;
+import lv.javaguru.campaignmanager.core.commands.campaigngroups.GetCampaignGroupCommand;
+import lv.javaguru.campaignmanager.core.commands.campaigngroups.GetCampaignGroupResult;
 import lv.javaguru.campaignmanager.core.services.CommandExecutor;
 import lv.javaguru.campaignmanager.integrations.rest.api.CampaignGroupResource;
 import lv.javaguru.campaignmanager.integrations.rest.api.RESTResource;
@@ -9,10 +11,7 @@ import lv.javaguru.campaignmanager.integrations.rest.dto.CampaignGroupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -37,6 +36,17 @@ public class CampaignGroupResourceImpl implements CampaignGroupResource {
                 campaignGroupDTO.getTitle()
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
+        return result.getCampaignGroup();
+    }
+
+    @GET
+    @Produces(APPLICATION_JSON)
+    @Path("/campaignGroups/{campaignGroupId}")
+    public CampaignGroupDTO get(Long campaignGroupId) {
+        GetCampaignGroupCommand command = new GetCampaignGroupCommand(
+                campaignGroupId
+        );
+        GetCampaignGroupResult result = commandExecutor.execute(command);
         return result.getCampaignGroup();
     }
 

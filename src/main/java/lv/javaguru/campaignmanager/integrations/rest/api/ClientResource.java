@@ -16,7 +16,6 @@ public interface ClientResource {
     ClientDTO create(ClientDTO clientDTO);
 
     @GET
-    @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/clients/{clientId}")
     ClientDTO get(@PathParam("clientId") Long clientId);

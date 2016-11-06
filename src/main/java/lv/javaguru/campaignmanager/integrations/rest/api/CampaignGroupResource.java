@@ -2,10 +2,7 @@ package lv.javaguru.campaignmanager.integrations.rest.api;
 
 import lv.javaguru.campaignmanager.integrations.rest.dto.CampaignGroupDTO;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -17,5 +14,10 @@ public interface CampaignGroupResource {
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
     CampaignGroupDTO create(CampaignGroupDTO campaignGroupDTO);
+
+    @GET
+    @Produces(APPLICATION_JSON)
+    @Path("/campaignGroups/{campaignGroupId}")
+    CampaignGroupDTO get(@PathParam("campaignGroupId") Long campaignGroupId);
 
 }

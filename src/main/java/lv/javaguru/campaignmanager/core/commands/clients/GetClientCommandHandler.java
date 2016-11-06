@@ -14,7 +14,6 @@ class GetClientCommandHandler
     @Autowired private ClientService clientService;
     @Autowired private ClientConverter clientConverter;
 
-
     @Override
     public GetClientResult execute(GetClientCommand command) {
         Client client = clientService.get(command.getClientId());

@@ -6,7 +6,6 @@ import lv.javaguru.campaignmanager.integrations.rest.dto.CampaignGroupDTO;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 
-import static lv.javaguru.campaignmanager.integrations.rest.dto.builders.CampaignGroupDTOBuilder.createCampaignGroupDTO;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -16,7 +15,7 @@ public class CampaignGroupResourceImplTest extends RESTResourceTest {
     @Test
     public void shouldCreateCampaignGroup() {
         String title = RandomStringUtils.random(20);
-        CampaignGroupDTO campaignGroup = createCampaignGroup(title);
+        CampaignGroupDTO campaignGroup = campaignGroupActions.create(title);
         assertThat(campaignGroup, is(notNullValue()));
         assertThat(campaignGroup.getId(), is(notNullValue()));
         assertThat(campaignGroup.getTitle(), is(title));
@@ -26,7 +25,7 @@ public class CampaignGroupResourceImplTest extends RESTResourceTest {
     @Test
     public void shouldFailIfTitleNotProvided() {
         try {
-            createCampaignGroup("");
+            campaignGroupActions.create("");
         } catch (FeignException e) {
             assertThat(e.status(), is(500));
         }
@@ -35,19 +34,12 @@ public class CampaignGroupResourceImplTest extends RESTResourceTest {
     @Test
     public void shouldFailIfCampaignWithSameTitleAlreadyExist() {
         String title = RandomStringUtils.random(20);
-        createCampaignGroup(title);
+        campaignGroupActions.create(title);
         try {
-            createCampaignGroup(title);
+            campaignGroupActions.create(title);
         } catch (FeignException e) {
             assertThat(e.status(), is(500));
         }
-    }
-
-
-    private CampaignGroupDTO createCampaignGroup(String title) {
-        return campaignGroupResource.create(
-                createCampaignGroupDTO().withTitle(title).build()
-        );
     }
 
 }

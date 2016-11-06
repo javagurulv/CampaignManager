@@ -7,25 +7,26 @@ import feign.jaxrs.JAXRSContract;
 import lv.javaguru.campaignmanager.config.Application;
 import lv.javaguru.campaignmanager.integrations.rest.api.CampaignGroupResource;
 import lv.javaguru.campaignmanager.integrations.rest.api.ClientResource;
+import lv.javaguru.campaignmanager.integrations.rest.campaigngroups.CampaignGroupActions;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @Ignore
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebIntegrationTest(randomPort = true)
-@SpringApplicationConfiguration(classes = {Application.class})
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {Application.class},
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RESTResourceTest {
 
     @Value("${local.server.port}")
     private int port;
 
     protected ClientResource clientResource;
-    protected CampaignGroupResource campaignGroupResource;
+
+    protected CampaignGroupActions campaignGroupActions;
 
 
     @Before
@@ -38,11 +39,12 @@ public class RESTResourceTest {
                 .contract(new JAXRSContract())
                 .target(ClientResource.class, url);
 
-        campaignGroupResource = Feign.builder()
+        CampaignGroupResource campaignGroupResource = Feign.builder()
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .contract(new JAXRSContract())
                 .target(CampaignGroupResource.class, url);
+        campaignGroupActions = new CampaignGroupActions(campaignGroupResource);
 
     }
 
