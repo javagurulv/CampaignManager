@@ -1,9 +1,9 @@
 1) Move to Gradle
 
 2) Create multi project build:
-    shared-api
     core
-    rest-api
+    api
+    app
     acceptance-tests
 
 3) Introduce acceptance tests with Cucumber

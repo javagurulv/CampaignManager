@@ -1,0 +1,14 @@
+
+dependencies {
+    compile project(':api')
+    compile project(':core')
+
+    compile 'org.springframework.boot:spring-boot-starter-jersey:1.4.0.RELEASE'
+
+    testCompile 'commons-lang:commons-lang:2.6'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE'
+    testCompile 'com.netflix.feign:feign-core:8.18.0'
+    testCompile 'com.netflix.feign:feign-jackson:8.18.0'
+    testCompile 'com.netflix.feign:feign-jaxrs:8.18.0'
+
+}
