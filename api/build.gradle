@@ -1,4 +1,0 @@
-
-dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-jersey:1.4.0.RELEASE'
-}

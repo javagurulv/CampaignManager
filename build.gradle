@@ -1,4 +1,8 @@
+apply from: "libraries.gradle"
+
 buildscript {
+    apply from: "libraries.gradle"
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -9,10 +13,61 @@ buildscript {
     }
 }
 
+allprojects {
+    apply plugin: "idea"
+
+    group "lv.javaguru"
+    version "1.0-SNAPSHOT"
+}
+
 subprojects {
     apply plugin: 'java'
 
     repositories {
+        mavenLocal()
         mavenCentral()
+        jcenter()
     }
+
+    sourceCompatibility = 1.8
+
+}
+
+
+project(":api") {
+    dependencies {
+	    compile libs.spring_boot_starter_jersey
+    }
+}
+
+project(":core") {
+    dependencies {
+	    compile project(":api")
+
+	    compile libs.hsqldb
+        compile libs.liquibase
+        compile libs.guava
+        compile libs.spring_boot_starter_data_jpa
+        
+	    testCompile libs.spring_boot_starter_test
+    }
+}
+
+project(":app") {
+    dependencies {
+	    compile project(":api")
+	    compile project(":core")
+
+    	compile libs.spring_boot_starter_jersey
+
+        testCompile libs.commons_lang
+        testCompile libs.spring_boot_starter_test
+        testCompile libs.feign_core
+        testCompile libs.feign_jackson
+        testCompile libs.feign_jaxrs
+    }
+}
+
+wrapper {
+    gradleVersion "3.0"
 }

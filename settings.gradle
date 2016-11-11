@@ -1,5 +1,3 @@
 rootProject.name = 'CampaignManager'
 
-include 'api'
-include 'core'
-include 'app'
+include 'api', 'core', 'app'
