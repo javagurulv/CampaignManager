@@ -1,12 +1,20 @@
-1) Move to Gradle
+Introduce Campaign entity
 
-2) Create multi project build:
-    core
-    api
-    app
-    acceptance-tests
+Campaign title must be unique across all campaigns
+CampaignState
 
-3) Introduce acceptance tests with Cucumber
 
-4) Integrate Spring DI to acceptance test scenarios
+
+Model launch parameters for Campaign
+Simple variant: start/end dates
+How to handle situations when campaign
+must be active only in Mondays?
+
+
+
+Introduce Hibernate Envers for change auditing
+
+Introduce acceptance tests with Cucumber
+
+Integrate Spring DI to acceptance test scenarios
 

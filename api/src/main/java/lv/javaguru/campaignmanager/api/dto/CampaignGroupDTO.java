@@ -8,6 +8,7 @@ public class CampaignGroupDTO implements Serializable {
     private Long id;
     private String title;
     private Date createdDate;
+    private Date updatedDate;
 
 
     public Long getId() {
@@ -32,6 +33,14 @@ public class CampaignGroupDTO implements Serializable {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
     }
 
 }

@@ -5,6 +5,8 @@ import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 class CampaignGroupServiceImpl implements CampaignGroupService {
 
@@ -21,6 +23,7 @@ class CampaignGroupServiceImpl implements CampaignGroupService {
         CampaignGroup campaignGroup = get(campaignGroupId);
         validator.validateOnEdit(campaignGroup, newTitle);
         campaignGroup.setTitle(newTitle);
+        campaignGroup.setUpdatedDate(new Date());
     }
 
 }

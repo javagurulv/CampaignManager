@@ -10,6 +10,7 @@ public class CampaignGroupDTOBuilder {
     private Long id;
     private String title;
     private Date createdDate;
+    private Date updatedDate;
 
     private CampaignGroupDTOBuilder() {}
 
@@ -22,6 +23,7 @@ public class CampaignGroupDTOBuilder {
         dto.setId(id);
         dto.setTitle(title);
         dto.setCreatedDate(createdDate);
+        dto.setUpdatedDate(updatedDate);
         return dto;
     }
 
@@ -37,6 +39,11 @@ public class CampaignGroupDTOBuilder {
 
     public CampaignGroupDTOBuilder withCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+        return this;
+    }
+
+    public CampaignGroupDTOBuilder withUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 

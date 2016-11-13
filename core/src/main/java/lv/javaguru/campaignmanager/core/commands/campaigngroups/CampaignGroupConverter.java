@@ -15,6 +15,7 @@ class CampaignGroupConverter {
                 .withId(campaignGroup.getId())
                 .withTitle(campaignGroup.getTitle())
                 .withCreatedDate(campaignGroup.getCreatedDate())
+                .withUpdatedDate(campaignGroup.getUpdatedDate())
                 .build();
     }
 

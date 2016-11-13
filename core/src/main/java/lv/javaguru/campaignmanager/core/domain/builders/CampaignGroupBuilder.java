@@ -2,10 +2,13 @@ package lv.javaguru.campaignmanager.core.domain.builders;
 
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 
+import java.util.Date;
+
 public class CampaignGroupBuilder {
 
     private Long id;
     private String title;
+    private Date updatedDate;
 
     private CampaignGroupBuilder() {}
 
@@ -17,6 +20,7 @@ public class CampaignGroupBuilder {
         CampaignGroup campaignGroup = new CampaignGroup();
         campaignGroup.setId(id);
         campaignGroup.setTitle(title);
+        campaignGroup.setUpdatedDate(updatedDate);
         return campaignGroup;
     }
 
@@ -27,6 +31,11 @@ public class CampaignGroupBuilder {
 
     public CampaignGroupBuilder withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public CampaignGroupBuilder withUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
         return this;
     }
 

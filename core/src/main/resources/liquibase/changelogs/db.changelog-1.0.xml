@@ -27,19 +27,17 @@
     </changeSet>
 
 
-    <changeSet id="create.sequence.campaign_group"
-               author="viktor" context="main">
+    <changeSet id="create.sequence.campaign_group" author="viktor" context="main">
         <createSequence sequenceName="campaign_group_seq" />
     </changeSet>
 
-    <changeSet id="create.table.campaign_groups"
-               author="viktor" context="main">
+    <changeSet id="create.table.campaign_groups" author="viktor" context="main">
         <createTable tableName="campaign_groups">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="title" type="varchar(100)">
+            <column name="title" type="varchar(200)">
                 <constraints nullable="false"/>
             </column>
 
@@ -49,6 +47,42 @@
 
             <column name="created_date" type="TIMESTAMP WITH TIME ZONE">
                 <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create.sequence.campaign" author="viktor" context="main">
+        <createSequence sequenceName="campaign_seq" />
+    </changeSet>
+
+    <changeSet id="create.table.campaigns" author="viktor" context="main">
+        <createTable tableName="campaigns">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="title" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="state" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="true"/>
             </column>
         </createTable>
     </changeSet>
