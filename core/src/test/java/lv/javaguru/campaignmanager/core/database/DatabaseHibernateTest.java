@@ -1,7 +1,6 @@
-package lv.javaguru.campaignmanager.core.database.clients;
+package lv.javaguru.campaignmanager.core.database;
 
 import lv.javaguru.campaignmanager.core.CoreApplicationTest;
-import lv.javaguru.campaignmanager.core.database.ClientDAO;
 import org.hibernate.SessionFactory;
 import org.junit.Ignore;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,6 @@ public abstract class DatabaseHibernateTest extends CoreApplicationTest {
 	protected SessionFactory sessionFactory;
 
 	@Autowired
-	protected ClientDAO clientDAO;
+	protected CampaignGroupDAO campaignGroupDAO;
 
 }
