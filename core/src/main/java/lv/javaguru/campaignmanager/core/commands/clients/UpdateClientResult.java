@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.clients;
 
 import lv.javaguru.campaignmanager.api.dto.ClientDTO;
-import lv.javaguru.campaignmanager.core.commands.DomainCommandResult;
+import lv.javaguru.campaignmanager.core.DomainCommandResult;
 
 public class UpdateClientResult implements DomainCommandResult {
 

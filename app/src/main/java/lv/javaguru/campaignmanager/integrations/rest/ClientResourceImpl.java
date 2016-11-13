@@ -7,7 +7,7 @@ import lv.javaguru.campaignmanager.core.commands.clients.CreateClientCommand;
 import lv.javaguru.campaignmanager.core.commands.clients.CreateClientResult;
 import lv.javaguru.campaignmanager.core.commands.clients.GetClientCommand;
 import lv.javaguru.campaignmanager.core.commands.clients.GetClientResult;
-import lv.javaguru.campaignmanager.core.services.CommandExecutor;
+import lv.javaguru.campaignmanager.core.CommandExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

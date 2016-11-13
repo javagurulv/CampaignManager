@@ -6,7 +6,7 @@ import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGr
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGroupResult;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.GetCampaignGroupCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.GetCampaignGroupResult;
-import lv.javaguru.campaignmanager.core.services.CommandExecutor;
+import lv.javaguru.campaignmanager.core.CommandExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

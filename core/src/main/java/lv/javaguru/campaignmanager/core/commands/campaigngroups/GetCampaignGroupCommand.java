@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
-import lv.javaguru.campaignmanager.core.commands.DomainCommand;
+import lv.javaguru.campaignmanager.core.DomainCommand;
 
 public class GetCampaignGroupCommand
         implements DomainCommand<GetCampaignGroupResult> {

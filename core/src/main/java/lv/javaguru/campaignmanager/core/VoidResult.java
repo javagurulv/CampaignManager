@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.core.commands;
+package lv.javaguru.campaignmanager.core;
 
 public class VoidResult implements DomainCommandResult {
 

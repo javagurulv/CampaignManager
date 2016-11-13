@@ -2,7 +2,7 @@ package lv.javaguru.campaignmanager.core.commands.clients;
 
 import lv.javaguru.campaignmanager.api.dto.ClientDTO;
 import lv.javaguru.campaignmanager.core.domain.Client;
-import lv.javaguru.campaignmanager.core.services.DomainCommandHandler;
+import lv.javaguru.campaignmanager.core.DomainCommandHandler;
 import lv.javaguru.campaignmanager.core.services.clients.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

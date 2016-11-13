@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-import lv.javaguru.campaignmanager.core.commands.DomainCommandResult;
+import lv.javaguru.campaignmanager.core.DomainCommandResult;
 
 public class CreateCampaignGroupResult implements DomainCommandResult {
 

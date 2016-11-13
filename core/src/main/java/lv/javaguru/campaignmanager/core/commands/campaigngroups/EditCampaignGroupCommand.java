@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
-import lv.javaguru.campaignmanager.core.commands.DomainCommand;
-import lv.javaguru.campaignmanager.core.commands.VoidResult;
+import lv.javaguru.campaignmanager.core.DomainCommand;
+import lv.javaguru.campaignmanager.core.VoidResult;
 
 public class EditCampaignGroupCommand implements DomainCommand<VoidResult> {
 

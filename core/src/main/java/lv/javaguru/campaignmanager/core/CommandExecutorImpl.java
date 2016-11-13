@@ -1,7 +1,5 @@
-package lv.javaguru.campaignmanager.core.services;
+package lv.javaguru.campaignmanager.core;
 
-import lv.javaguru.campaignmanager.core.commands.DomainCommand;
-import lv.javaguru.campaignmanager.core.commands.DomainCommandResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
