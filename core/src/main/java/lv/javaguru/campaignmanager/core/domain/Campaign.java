@@ -46,4 +46,16 @@ public class Campaign extends BaseEntity {
         this.state = state;
     }
 
+    public boolean isActive() {
+        return state == CampaignState.ACTIVE;
+    }
+
+    public boolean isNotActive() {
+        return state == CampaignState.NOT_ACTIVE;
+    }
+
+    public boolean isClosed() {
+        return state == CampaignState.CLOSED;
+    }
+
 }
