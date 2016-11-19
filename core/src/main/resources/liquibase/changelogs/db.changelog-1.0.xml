@@ -12,7 +12,7 @@
 
     <changeSet id="create.table.campaign_groups" author="viktor" context="main">
         <createTable tableName="campaign_groups">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -40,7 +40,7 @@
 
     <changeSet id="create.table.campaigns" author="viktor" context="main">
         <createTable tableName="campaigns">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="BIGINT">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
@@ -64,6 +64,41 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
+    </changeSet>
+
+    <changeSet id="create.table.task_campaigns" author="viktor" context="main">
+        <createTable tableName="task_campaigns">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="campaign_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="version" type="BIGINT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="created_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="id"
+                                 baseTableName="task_campaigns"
+                                 constraintName="fk_task_campaigns_id"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="campaigns"/>
+
     </changeSet>
 
 </databaseChangeLog>
