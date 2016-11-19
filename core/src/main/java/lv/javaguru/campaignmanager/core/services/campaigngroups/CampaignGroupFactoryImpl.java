@@ -16,10 +16,14 @@ class CampaignGroupFactoryImpl implements CampaignGroupFactory {
     @Override
     public CampaignGroup create(String title) {
         validator.validateOnCreate(title);
-        CampaignGroup campaignGroup = createCampaignGroup()
-                .withTitle(title).build();
+        CampaignGroup campaignGroup = buildCampaignGroup(title);
         dao.create(campaignGroup);
         return campaignGroup;
+    }
+
+    private CampaignGroup buildCampaignGroup(String title) {
+        return createCampaignGroup()
+                    .withTitle(title).build();
     }
 
 }

@@ -3,6 +3,7 @@ package lv.javaguru.campaignmanager.core.domain.builders;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
 
+
 public class CampaignBuilder {
 
     private Long id;

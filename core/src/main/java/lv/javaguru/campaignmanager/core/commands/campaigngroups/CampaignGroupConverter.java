@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import static lv.javaguru.campaignmanager.api.dto.builders.CampaignGroupDTOBuilder.createCampaignGroupDTO;
 
-
 @Component
 class CampaignGroupConverter {
 
