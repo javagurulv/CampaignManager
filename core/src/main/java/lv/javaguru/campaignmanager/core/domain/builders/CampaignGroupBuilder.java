@@ -10,7 +10,7 @@ public class CampaignGroupBuilder {
     private String title;
     private Date updatedDate;
 
-    private CampaignGroupBuilder() {}
+    private CampaignGroupBuilder() { }
 
     public static CampaignGroupBuilder createCampaignGroup() {
         return new CampaignGroupBuilder();

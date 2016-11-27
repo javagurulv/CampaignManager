@@ -12,10 +12,10 @@ public abstract class BaseEntity implements Serializable {
     @Version
     private Long version = 0L;
 
-    @Column(name="created_date", nullable = false)
+    @Column(name = "created_date", nullable = false)
     private Date createdDate = new Date();
 
-    @Column(name="updated_date", nullable = true)
+    @Column(name = "updated_date", nullable = true)
     private Date updatedDate;
 
 

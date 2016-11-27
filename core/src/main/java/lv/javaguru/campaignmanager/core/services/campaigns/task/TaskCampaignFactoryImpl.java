@@ -7,7 +7,8 @@ import lv.javaguru.campaignmanager.core.services.campaigns.CampaignFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.campaignmanager.core.domain.builders.TaskCampaignBuilder.createTaskCampaign;
+import static lv.javaguru.campaignmanager.core.domain.builders.
+        TaskCampaignBuilder.createTaskCampaign;
 
 @Component
 class TaskCampaignFactoryImpl implements TaskCampaignFactory {

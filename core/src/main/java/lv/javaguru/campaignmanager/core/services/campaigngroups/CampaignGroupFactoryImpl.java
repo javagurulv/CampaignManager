@@ -5,7 +5,8 @@ import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.campaignmanager.core.domain.builders.CampaignGroupBuilder.createCampaignGroup;
+import static lv.javaguru.campaignmanager.core.domain.builders.
+        CampaignGroupBuilder.createCampaignGroup;
 
 @Component
 class CampaignGroupFactoryImpl implements CampaignGroupFactory {

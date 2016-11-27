@@ -21,7 +21,7 @@ class CommandExecutorImpl implements CommandExecutor {
     @PostConstruct
     public void init() {
         commandServiceMap = new HashMap<>();
-        if(services != null && !services.isEmpty()) {
+        if (services != null && !services.isEmpty()) {
             for (DomainCommandHandler service : services) {
                 Class domainCommandClass = service.getCommandType();
                 commandServiceMap.put(domainCommandClass, service);
@@ -32,10 +32,12 @@ class CommandExecutorImpl implements CommandExecutor {
     @Transactional()
     public <T extends DomainCommandResult> T execute(DomainCommand<T> domainCommand) {
         DomainCommandHandler service = commandServiceMap.get(domainCommand.getClass());
-        if(service != null) {
-            return (T)service.execute(domainCommand);
+        if (service != null) {
+            return (T) service.execute(domainCommand);
         } else {
-            throw new IllegalArgumentException("Unknown domain command! " + domainCommand.toString());
+            throw new IllegalArgumentException(
+                    "Unknown domain command! " + domainCommand.toString()
+            );
         }
     }
 

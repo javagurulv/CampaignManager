@@ -22,14 +22,18 @@ class CampaignValidatorImpl implements CampaignValidator {
 
     private void checkTitleNotEmpty(String title) {
         if (isEmpty(title)) {
-            throw new IllegalArgumentException("Campaign title must be specified");
+            throw new IllegalArgumentException(
+                    "Campaign title must be specified"
+            );
         }
     }
 
     private void checkCampaignWithSameTitle(String title) {
         Optional<Campaign> campaign = campaignDAO.findByTitle(title);
         if (campaign.isPresent()) {
-            throw new IllegalArgumentException("Campaign with same title already exist");
+            throw new IllegalArgumentException(
+                    "Campaign with same title already exist"
+            );
         }
     }
 

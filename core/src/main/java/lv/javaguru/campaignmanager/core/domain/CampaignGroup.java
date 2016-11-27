@@ -1,18 +1,28 @@
 package lv.javaguru.campaignmanager.core.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Column;
+
 
 @Entity
-@Table(name="campaign_groups")
+@Table(name = "campaign_groups")
 public class CampaignGroup extends BaseEntity {
 
     @Id
-    @GeneratedValue(generator = "campaign_group_seq", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "campaign_group_seq", sequenceName = "campaign_group_seq", allocationSize = 1)
-    @Column(name="id", nullable = false)
+    @GeneratedValue(generator = "campaign_group_seq",
+                    strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "campaign_group_seq",
+                       sequenceName = "campaign_group_seq",
+                       allocationSize = 1)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name="title", nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
 
 

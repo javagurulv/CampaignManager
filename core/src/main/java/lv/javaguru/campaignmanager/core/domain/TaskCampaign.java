@@ -1,13 +1,19 @@
 package lv.javaguru.campaignmanager.core.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.OneToOne;
+import javax.persistence.FetchType;
+
 
 @Entity
-@Table(name="task_campaigns")
+@Table(name = "task_campaigns")
 public class TaskCampaign extends BaseEntity {
 
     @Id
-    @Column(name="id", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)

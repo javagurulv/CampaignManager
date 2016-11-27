@@ -16,7 +16,9 @@ class TaskCampaignConverter {
     TaskCampaignDTO convert(TaskCampaign taskCampaign) {
         return createTaskCampaignDTO()
                 .withId(taskCampaign.getId())
-                .withCampaign(campaignConverter.convert(taskCampaign.getCampaign()))
+                .withCampaign(
+                        campaignConverter.convert(taskCampaign.getCampaign())
+                )
                 .withCreatedDate(taskCampaign.getCreatedDate())
                 .withUpdatedDate(taskCampaign.getUpdatedDate())
                 .build();

@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Ignore
 public abstract class DatabaseHibernateTest extends CoreApplicationTest {
 
-	@Autowired
-	protected SessionFactory sessionFactory;
+    @Autowired
+    protected SessionFactory sessionFactory;
 
-	@Autowired
-	protected CampaignGroupDAO campaignGroupDAO;
+    @Autowired
+    protected CampaignGroupDAO campaignGroupDAO;
 
 }

@@ -6,7 +6,8 @@ import lv.javaguru.campaignmanager.core.domain.CampaignState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.campaignmanager.core.domain.builders.CampaignBuilder.createCampaign;
+import static lv.javaguru.campaignmanager.core.domain.builders.
+        CampaignBuilder.createCampaign;
 
 @Component
 class CampaignFactoryImpl implements CampaignFactory {

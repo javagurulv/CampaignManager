@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(Campaign.class)
-public class Campaign_ {
+public abstract class CampaignJPA {
 
     public static volatile SingularAttribute<Campaign, Long> id;
     public static volatile SingularAttribute<Campaign, String> title;

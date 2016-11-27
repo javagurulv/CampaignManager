@@ -30,26 +30,37 @@ class CampaignGroupValidatorImpl implements CampaignGroupValidator {
 
     private void checkTitleNotEmpty(String title) {
         if (isEmpty(title)) {
-            throw new IllegalArgumentException("Campaign Group title must be specified");
+            throw new IllegalArgumentException(
+                    "Campaign Group title must be specified"
+            );
         }
     }
 
     private void checkCampaignGroupWithSameTitle(String title) {
-        Optional<CampaignGroup> campaignGroup = campaignGroupDAO.findByTitle(title);
-        if (campaignGroup.isPresent()) {
-            throw new IllegalArgumentException("Campaign Group with same title already exist");
+        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(title);
+        if (group.isPresent()) {
+            throw new IllegalArgumentException(
+                    "Campaign Group with same title already exist"
+            );
         }
     }
 
     private void checkCampaignGroupWithSameTitle(CampaignGroup campaignGroup,
                                                  String newTitle) {
-        Optional<CampaignGroup> campaignGroupOpt = campaignGroupDAO.findByTitle(newTitle);
-        if (campaignGroupOpt.isPresent()) {
-            CampaignGroup groupWithSameTitle = campaignGroupOpt.get();
-            if (!Objects.equals(campaignGroup.getId(), groupWithSameTitle.getId())) {
-                throw new IllegalArgumentException("Campaign Group with same title already exist");
+        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(newTitle);
+        if (group.isPresent()) {
+            CampaignGroup groupWithSameTitle = group.get();
+            boolean isSameGroup = isSame(campaignGroup, groupWithSameTitle);
+            if (!isSameGroup) {
+                throw new IllegalArgumentException(
+                        "Campaign Group with same title already exist"
+                );
             }
         }
+    }
+
+    private boolean isSame(CampaignGroup group1, CampaignGroup group2) {
+        return Objects.equals(group1.getId(), group2.getId());
     }
 
 }
