@@ -12,7 +12,7 @@ public class CampaignGroupDTOBuilder {
     private Date createdDate;
     private Date updatedDate;
 
-    private CampaignGroupDTOBuilder() {}
+    private CampaignGroupDTOBuilder() { }
 
     public static CampaignGroupDTOBuilder createCampaignGroupDTO() {
         return new CampaignGroupDTOBuilder();
