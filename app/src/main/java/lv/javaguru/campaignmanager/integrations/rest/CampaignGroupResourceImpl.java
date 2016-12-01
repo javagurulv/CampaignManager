@@ -10,7 +10,11 @@ import lv.javaguru.campaignmanager.core.CommandExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
+import javax.ws.rs.POST;
+import javax.ws.rs.GET;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -35,7 +39,7 @@ public class CampaignGroupResourceImpl {
                 campaignGroupDTO.getTitle()
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
-        return Response.status(201).entity(result.getCampaignGroup()).build();
+        return Response.status(Response.Status.CREATED).entity(result.getCampaignGroup()).build();
     }
 
     @GET
@@ -46,7 +50,7 @@ public class CampaignGroupResourceImpl {
                 campaignGroupId
         );
         GetCampaignGroupResult result = commandExecutor.execute(command);
-        return Response.status(200).entity(result.getCampaignGroup()).build();
+        return Response.status(Response.Status.OK).entity(result.getCampaignGroup()).build();
     }
 
 }
