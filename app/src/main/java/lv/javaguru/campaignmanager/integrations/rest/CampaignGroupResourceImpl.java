@@ -14,26 +14,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Component
 @Path(RESTResource.API_PATH)
 public class CampaignGroupResourceImpl {
 
-    private CommandExecutor commandExecutor;
-
-    @Autowired
-    public CampaignGroupResourceImpl(CommandExecutor commandExecutor) {
-        this.commandExecutor = commandExecutor;
-    }
+    @Autowired private CommandExecutor commandExecutor;
 
     @POST
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
-    public Response create(CampaignGroupDTO campaignGroupDTO) {
+    public Response create(CampaignGroupDTO campaignGroup) {
         CreateCampaignGroupCommand command = new CreateCampaignGroupCommand(
-                new GroupTitle(campaignGroupDTO.getTitle())
+                new GroupTitle(campaignGroup.getTitle())
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
         return Response.status(Response.Status.CREATED).entity(result.getCampaignGroup()).build();
@@ -42,11 +38,11 @@ public class CampaignGroupResourceImpl {
     @PUT
     @Consumes(APPLICATION_JSON)
     @Path("/campaignGroups/{campaignGroupId}")
-    public Response edit(@PathVariable("campaignGroupId") Long campaignGroupId,
-                         @FormParam("newGroupTitle") String newGroupTitle) {
+    public Response edit(@PathParam("campaignGroupId") Long campaignGroupId,
+                         CampaignGroupDTO campaignGroup) {
         EditCampaignGroupCommand editCommand = new EditCampaignGroupCommand(
                 new CampaignGroupId(campaignGroupId),
-                new GroupTitle(newGroupTitle)
+                new GroupTitle(campaignGroup.getTitle())
         );
         commandExecutor.execute(editCommand);
         return Response.status(Response.Status.OK).build();
@@ -55,7 +51,7 @@ public class CampaignGroupResourceImpl {
     @GET
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups/{campaignGroupId}")
-    public Response get(@PathVariable("campaignGroupId") Long campaignGroupId) {
+    public Response get(@PathParam("campaignGroupId") Long campaignGroupId) {
         GetCampaignGroupCommand command = new GetCampaignGroupCommand(
                 new CampaignGroupId(campaignGroupId)
         );

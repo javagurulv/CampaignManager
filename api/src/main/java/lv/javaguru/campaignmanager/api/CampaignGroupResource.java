@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.*;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path(RESTResource.API_PATH)
@@ -14,13 +15,13 @@ public interface CampaignGroupResource {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
-    CampaignGroupDTO create(CampaignGroupDTO campaignGroupDTO);
+    CampaignGroupDTO create(CampaignGroupDTO campaignGroup);
 
     @PUT
     @Consumes(APPLICATION_JSON)
     @Path("/campaignGroups/{campaignGroupId}")
-    CampaignGroupDTO edit(@PathParam("campaignGroupId") Long campaignGroupId,
-                          @FormParam("newGroupTitle") String newGroupTitle);
+    void edit(@PathParam("campaignGroupId") Long campaignGroupId,
+              CampaignGroupDTO campaignGroup);
 
     @GET
     @Produces(APPLICATION_JSON)

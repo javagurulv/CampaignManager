@@ -13,14 +13,16 @@ public class CampaignGroupActions {
         this.resource = resource;
     }
 
-    public CampaignGroupDTO create(String title) {
+    public CampaignGroupDTO create(String groupTitle) {
         return resource.create(
-                createCampaignGroupDTO().withTitle(title).build()
+                createCampaignGroupDTO().withTitle(groupTitle).build()
         );
     }
 
     public void edit(Long campaignGroupId, String newGroupTitle) {
-        resource.edit(campaignGroupId, newGroupTitle);
+        resource.edit(campaignGroupId,
+                createCampaignGroupDTO().withTitle(newGroupTitle).build()
+        );
     }
 
     public CampaignGroupDTO get(Long campaignGroupId) {

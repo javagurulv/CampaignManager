@@ -20,7 +20,7 @@ class EditCampaignGroupHandler
 
     @Override
     public Class getCommandType() {
-        return VoidResult.class;
+        return EditCampaignGroupCommand.class;
     }
 
 }
