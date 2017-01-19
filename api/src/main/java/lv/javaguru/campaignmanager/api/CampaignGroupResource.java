@@ -1,11 +1,9 @@
 package lv.javaguru.campaignmanager.api;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.ws.rs.*;
 
-import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Path(RESTResource.API_PATH)
