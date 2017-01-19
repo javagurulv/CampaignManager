@@ -1,18 +1,19 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.DomainCommand;
 
 public class CreateCampaignGroupCommand
         implements DomainCommand<CreateCampaignGroupResult> {
 
-    private String title;
+    private GroupTitle groupTitle;
 
-    public CreateCampaignGroupCommand(String title) {
-        this.title = title;
+    public CreateCampaignGroupCommand(GroupTitle groupTitle) {
+        this.groupTitle = groupTitle;
     }
 
-    public String getTitle() {
-        return title;
+    public GroupTitle getGroupTitle() {
+        return groupTitle;
     }
 
 }

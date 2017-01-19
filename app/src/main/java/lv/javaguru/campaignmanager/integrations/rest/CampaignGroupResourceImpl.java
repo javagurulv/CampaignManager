@@ -2,6 +2,7 @@ package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.RESTResource;
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGroupCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.CreateCampaignGroupResult;
 import lv.javaguru.campaignmanager.core.commands.campaigngroups.GetCampaignGroupCommand;
@@ -36,7 +37,7 @@ public class CampaignGroupResourceImpl {
     @Path("/campaignGroups")
     public Response create(CampaignGroupDTO campaignGroupDTO) {
         CreateCampaignGroupCommand command = new CreateCampaignGroupCommand(
-                campaignGroupDTO.getTitle()
+                new GroupTitle(campaignGroupDTO.getTitle())
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
         return Response.status(Response.Status.CREATED).entity(result.getCampaignGroup()).build();

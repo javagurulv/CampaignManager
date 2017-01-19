@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
 import org.junit.Rule;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class CampaignGroupValidatorImplTest {
     public void shouldThrowExceptionWhenTitleIsBlank() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group title must be specified");
-        validator.validateOnCreate("");
+        validator.validateOnCreate(new GroupTitle(""));
     }
 
     @Test
@@ -46,13 +47,13 @@ public class CampaignGroupValidatorImplTest {
                 .when(campaignGroupDAO).findByTitle(TITLE);
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group with same title already exist");
-        validator.validateOnCreate(TITLE);
+        validator.validateOnCreate(new GroupTitle(TITLE));
     }
 
     @Test
     public void shouldSucceed() {
         doReturn(Optional.empty()).when(campaignGroupDAO).findByTitle(TITLE);
-        validator.validateOnCreate(TITLE);
+        validator.validateOnCreate(new GroupTitle(TITLE));
     }
 
 }

@@ -1,25 +1,25 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.DomainCommand;
 import lv.javaguru.campaignmanager.core.VoidResult;
 
 public class EditCampaignGroupCommand implements DomainCommand<VoidResult> {
 
     private Long campaignGroupId;
-    private String title;
+    private GroupTitle newGroupTitle;
 
     public EditCampaignGroupCommand(Long campaignGroupId,
-                                    String title) {
+                                    GroupTitle newGroupTitle) {
         this.campaignGroupId = campaignGroupId;
-        this.title = title;
+        this.newGroupTitle = newGroupTitle;
     }
 
     public Long getCampaignGroupId() {
         return campaignGroupId;
     }
 
-    public String getTitle() {
-        return title;
+    public GroupTitle getNewGroupTitle() {
+        return newGroupTitle;
     }
-
 }

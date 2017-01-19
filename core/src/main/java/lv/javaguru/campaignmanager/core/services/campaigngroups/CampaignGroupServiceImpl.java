@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,10 @@ class CampaignGroupServiceImpl implements CampaignGroupService {
     }
 
     @Override
-    public void edit(Long campaignGroupId, String newTitle) {
+    public void edit(Long campaignGroupId, GroupTitle newGroupTitle) {
         CampaignGroup campaignGroup = get(campaignGroupId);
-        validator.validateOnEdit(campaignGroup, newTitle);
-        campaignGroup.setTitle(newTitle);
+        validator.validateOnEdit(campaignGroup, newGroupTitle);
+        campaignGroup.setTitle(newGroupTitle.getTitle());
         campaignGroup.setUpdatedDate(new Date());
     }
 

@@ -14,7 +14,7 @@ class EditCampaignGroupHandler
 
     @Override
     public VoidResult execute(EditCampaignGroupCommand command) {
-        service.edit(command.getCampaignGroupId(), command.getTitle());
+        service.edit(command.getCampaignGroupId(), command.getNewGroupTitle());
         return VoidResult.INSTANCE;
     }
 

@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.domain.builders;
 
+import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 
 import java.util.Date;
@@ -31,6 +32,11 @@ public class CampaignGroupBuilder {
 
     public CampaignGroupBuilder withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public CampaignGroupBuilder with(GroupTitle groupTitle) {
+        this.title = groupTitle.getTitle();
         return this;
     }
 

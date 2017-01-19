@@ -16,7 +16,7 @@ class CreateCampaignGroupHandler
 
     @Override
     public CreateCampaignGroupResult execute(CreateCampaignGroupCommand command) {
-        CampaignGroup campaignGroup = factory.create(command.getTitle());
+        CampaignGroup campaignGroup = factory.create(command.getGroupTitle());
         CampaignGroupDTO campaignGroupDTO = converter.convert(campaignGroup);
         return new CreateCampaignGroupResult(campaignGroupDTO);
     }
