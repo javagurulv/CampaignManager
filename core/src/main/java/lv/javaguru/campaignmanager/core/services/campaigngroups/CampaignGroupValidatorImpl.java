@@ -36,7 +36,7 @@ class CampaignGroupValidatorImpl implements CampaignGroupValidator {
     }
 
     private void checkCampaignGroupWithSameTitle(GroupTitle groupTitle) {
-        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(groupTitle.getTitle());
+        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(groupTitle.get());
         if (group.isPresent()) {
             throw new IllegalArgumentException(
                     "Campaign Group with same title already exist"
@@ -46,7 +46,7 @@ class CampaignGroupValidatorImpl implements CampaignGroupValidator {
 
     private void checkCampaignGroupWithSameTitle(CampaignGroup campaignGroup,
                                                  GroupTitle newGroupTitle) {
-        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(newGroupTitle.getTitle());
+        Optional<CampaignGroup> group = campaignGroupDAO.findByTitle(newGroupTitle.get());
         if (group.isPresent()) {
             CampaignGroup groupWithSameTitle = group.get();
             boolean isSameGroup = isSame(campaignGroup, groupWithSameTitle);

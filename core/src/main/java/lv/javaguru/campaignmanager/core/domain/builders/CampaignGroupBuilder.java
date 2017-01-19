@@ -36,7 +36,7 @@ public class CampaignGroupBuilder {
     }
 
     public CampaignGroupBuilder with(GroupTitle groupTitle) {
-        this.title = groupTitle.getTitle();
+        this.title = groupTitle.get();
         return this;
     }
 

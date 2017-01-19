@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
@@ -15,15 +16,15 @@ class CampaignGroupServiceImpl implements CampaignGroupService {
     @Autowired private CampaignGroupDAO dao;
 
     @Override
-    public CampaignGroup get(Long campaignGroupId) {
-        return dao.getRequired(campaignGroupId);
+    public CampaignGroup get(CampaignGroupId campaignGroupId) {
+        return dao.getRequired(campaignGroupId.get());
     }
 
     @Override
-    public void edit(Long campaignGroupId, GroupTitle newGroupTitle) {
+    public void edit(CampaignGroupId campaignGroupId, GroupTitle newGroupTitle) {
         CampaignGroup campaignGroup = get(campaignGroupId);
         validator.validateOnEdit(campaignGroup, newGroupTitle);
-        campaignGroup.setTitle(newGroupTitle.getTitle());
+        campaignGroup.setTitle(newGroupTitle.get());
         campaignGroup.setUpdatedDate(new Date());
     }
 

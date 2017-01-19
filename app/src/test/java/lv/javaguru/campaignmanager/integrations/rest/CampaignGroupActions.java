@@ -19,6 +19,10 @@ public class CampaignGroupActions {
         );
     }
 
+    public void edit(Long campaignGroupId, String newGroupTitle) {
+        resource.edit(campaignGroupId, newGroupTitle);
+    }
+
     public CampaignGroupDTO get(Long campaignGroupId) {
         return resource.get(campaignGroupId);
     }

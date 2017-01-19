@@ -16,7 +16,7 @@ class CampaignGroupDAOImpl
     public Optional<CampaignGroup> findByTitle(String title) {
         CampaignGroup campaignGroup = (CampaignGroup) getCurrentSession()
                 .createCriteria(CampaignGroup.class)
-                .add(Restrictions.eq(CampaignGroupJPA.title.getName(), title))
+                .add(Restrictions.eq("title", title))
                 .uniqueResult();
         return Optional.ofNullable(campaignGroup);
     }

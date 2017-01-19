@@ -16,7 +16,7 @@ class GetCampaignGroupHandler
 
     @Override
     public GetCampaignGroupResult execute(GetCampaignGroupCommand command) {
-        CampaignGroup campaignGroup = service.get(command.getCampaigGroupId());
+        CampaignGroup campaignGroup = service.get(command.getCampaignGroupId());
         CampaignGroupDTO campaignGroupDTO = converter.convert(campaignGroup);
         return new GetCampaignGroupResult(campaignGroupDTO);
     }

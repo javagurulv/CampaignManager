@@ -10,7 +10,7 @@ public class GroupTitle {
         this.title = title;
     }
 
-    public String getTitle() {
+    public String get() {
         return title;
     }
 

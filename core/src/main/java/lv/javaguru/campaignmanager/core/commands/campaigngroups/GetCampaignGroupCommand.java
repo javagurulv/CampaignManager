@@ -1,18 +1,18 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.core.DomainCommand;
 
 public class GetCampaignGroupCommand
         implements DomainCommand<GetCampaignGroupResult> {
 
-    private Long campaigGroupId;
+    private CampaignGroupId campaignGroupId;
 
-    public GetCampaignGroupCommand(Long campaigGroupId) {
-        this.campaigGroupId = campaigGroupId;
+    public GetCampaignGroupCommand(CampaignGroupId campaignGroupId) {
+        this.campaignGroupId = campaignGroupId;
     }
 
-    public Long getCampaigGroupId() {
-        return campaigGroupId;
+    public CampaignGroupId getCampaignGroupId() {
+        return campaignGroupId;
     }
-
 }

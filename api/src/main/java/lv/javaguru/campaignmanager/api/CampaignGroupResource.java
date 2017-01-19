@@ -1,13 +1,9 @@
 package lv.javaguru.campaignmanager.api;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -19,6 +15,12 @@ public interface CampaignGroupResource {
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
     CampaignGroupDTO create(CampaignGroupDTO campaignGroupDTO);
+
+    @PUT
+    @Consumes(APPLICATION_JSON)
+    @Path("/campaignGroups/{campaignGroupId}")
+    CampaignGroupDTO edit(@PathParam("campaignGroupId") Long campaignGroupId,
+                          @FormParam("newGroupTitle") String newGroupTitle);
 
     @GET
     @Produces(APPLICATION_JSON)
