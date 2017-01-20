@@ -20,7 +20,7 @@ public class FeignExceptionMatcher extends BaseMatcher {
 
     @Override
     public boolean matches(Object o) {
-        return ((FeignException)o).status() == responseStatusCode;
+        return ((FeignException) o).status() == responseStatusCode;
     }
 
     @Override

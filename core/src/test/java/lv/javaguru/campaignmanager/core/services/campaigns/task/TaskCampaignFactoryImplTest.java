@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.TaskCampaignDAO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
@@ -27,27 +28,28 @@ public class TaskCampaignFactoryImplTest {
     @InjectMocks
     private TaskCampaignFactory factory = new TaskCampaignFactoryImpl();
 
+    private final static Long GROUP_ID = 1L;
     private final static String TITLE = "title";
     private final static CampaignTitle CAMPAIGN_TITLE = new CampaignTitle(TITLE);
-
+    private final static CampaignGroupId CAMPAIGN_GROUP_ID = new CampaignGroupId(GROUP_ID);
 
     @Test
     public void shouldCreateCampaign() {
-        factory.create(CAMPAIGN_TITLE);
-        verify(campaignFactory).create(CAMPAIGN_TITLE);
+        factory.create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
+        verify(campaignFactory).create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
     }
 
     @Test
     public void shouldCreate() {
-        TaskCampaign taskCampaign = factory.create(CAMPAIGN_TITLE);
+        TaskCampaign taskCampaign = factory.create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         verify(dao).create(taskCampaign);
     }
 
     @Test
     public void shouldReturnTaskCampaign() {
         Campaign campaign = createCampaign().build();
-        doReturn(campaign).when(campaignFactory).create(CAMPAIGN_TITLE);
-        TaskCampaign taskCampaign = factory.create(CAMPAIGN_TITLE);
+        doReturn(campaign).when(campaignFactory).create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
+        TaskCampaign taskCampaign = factory.create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         assertThat(taskCampaign.getCampaign(), is(sameInstance(campaign)));
     }
 

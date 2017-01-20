@@ -16,7 +16,10 @@ class CreateTaskCampaignHandler
 
     @Override
     public CreateTaskCampaignResult execute(CreateTaskCampaignCommand command) {
-        TaskCampaign taskCampaign = factory.create(command.getTitle());
+        TaskCampaign taskCampaign = factory.create(
+                command.getCampaignGroupId(),
+                command.getTitle()
+        );
         TaskCampaignDTO taskCampaignDTO = converter.convert(taskCampaign);
         return new CreateTaskCampaignResult(taskCampaignDTO);
     }

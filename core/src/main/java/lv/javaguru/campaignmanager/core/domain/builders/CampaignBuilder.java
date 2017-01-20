@@ -2,6 +2,7 @@ package lv.javaguru.campaignmanager.core.domain.builders;
 
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
+import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
 
 
@@ -10,6 +11,7 @@ public class CampaignBuilder {
     private Long id;
     private String title;
     private CampaignState state;
+    private CampaignGroup campaignGroup;
 
 
     private CampaignBuilder() { }
@@ -23,6 +25,7 @@ public class CampaignBuilder {
         campaign.setId(id);
         campaign.setTitle(title);
         campaign.setState(state);
+        campaign.setCampaignGroup(campaignGroup);
         return campaign;
     }
 
@@ -43,6 +46,16 @@ public class CampaignBuilder {
 
     public CampaignBuilder withState(CampaignState state) {
         this.state = state;
+        return this;
+    }
+
+    public CampaignBuilder with(CampaignGroup campaignGroup) {
+        this.campaignGroup = campaignGroup;
+        return this;
+    }
+
+    public CampaignBuilder with(CampaignGroupBuilder campaignGroupBuilder) {
+        this.campaignGroup = campaignGroupBuilder.build();
         return this;
     }
 

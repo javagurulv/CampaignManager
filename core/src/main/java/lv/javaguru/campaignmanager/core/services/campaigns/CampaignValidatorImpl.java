@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignDAO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
@@ -14,9 +15,19 @@ class CampaignValidatorImpl implements CampaignValidator {
     @Autowired private CampaignDAO campaignDAO;
 
     @Override
-    public void validateOnCreate(CampaignTitle title) {
+    public void validateOnCreate(CampaignGroupId campaignGroupId,
+                                 CampaignTitle title) {
+        checkCampaignGroupIdNotEmpty(campaignGroupId);
         checkTitleNotEmpty(title);
         checkCampaignWithSameTitle(title);
+    }
+
+    private void checkCampaignGroupIdNotEmpty(CampaignGroupId groupId) {
+        if (groupId == null || groupId.isNull()) {
+            throw new IllegalArgumentException(
+                    "Campaign Group must be specified"
+            );
+        }
     }
 
     private void checkTitleNotEmpty(CampaignTitle title) {

@@ -6,34 +6,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="create.sequence.campaign_group" author="viktor" context="main">
-        <createSequence sequenceName="campaign_group_seq" />
-    </changeSet>
-
-    <changeSet id="create.table.campaign_groups" author="viktor" context="main">
-        <createTable tableName="campaign_groups">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-
-            <column name="title" type="varchar(200)">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="version" type="BIGINT" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="created_date" type="TIMESTAMP WITH TIME ZONE">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="updated_date" type="TIMESTAMP WITH TIME ZONE">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-    </changeSet>
-
     <changeSet id="create.sequence.campaign" author="viktor" context="main">
         <createSequence sequenceName="campaign_seq" />
     </changeSet>
@@ -52,6 +24,18 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="group_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="start_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="end_date" type="TIMESTAMP WITH TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+
             <column name="version" type="BIGINT" defaultValue="0">
                 <constraints nullable="false"/>
             </column>
@@ -66,39 +50,24 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create.table.task_campaigns" author="viktor" context="main">
-        <createTable tableName="task_campaigns">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-
-            <column name="campaign_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="version" type="BIGINT" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="created_date" type="TIMESTAMP WITH TIME ZONE">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="updated_date" type="TIMESTAMP WITH TIME ZONE">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
-
+    <changeSet id="create.fk.constraint.campaigns.group.id" author="viktor" context="main">
         <addForeignKeyConstraint baseColumnNames="id"
-                                 baseTableName="task_campaigns"
-                                 constraintName="fk_task_campaigns_id"
+                                 baseTableName="campaigns"
+                                 constraintName="fk_campaigns_group_id"
                                  deferrable="false"
                                  initiallyDeferred="false"
                                  onDelete="NO ACTION"
                                  onUpdate="NO ACTION"
                                  referencedColumnNames="id"
-                                 referencedTableName="campaigns"/>
+                                 referencedTableName="campaign_groups"/>
+    </changeSet>
 
+    <changeSet id="create.index.campaigns.group.id" author="viktor" context="main">
+        <createIndex indexName="idx_campaigns_group_id"
+                     tableName="campaigns"
+                     unique="false">
+            <column name="group_id" type="BIGINT"/>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>

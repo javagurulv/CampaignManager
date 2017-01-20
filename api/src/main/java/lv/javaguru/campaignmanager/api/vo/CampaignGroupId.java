@@ -11,4 +11,8 @@ public class CampaignGroupId {
     public Long get() {
         return groupId;
     }
+
+    public boolean isNull() {
+        return groupId == null;
+    }
 }

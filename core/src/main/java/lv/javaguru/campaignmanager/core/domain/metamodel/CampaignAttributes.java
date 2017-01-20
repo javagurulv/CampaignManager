@@ -1,17 +1,18 @@
 package lv.javaguru.campaignmanager.core.domain.metamodel;
 
-import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
+import lv.javaguru.campaignmanager.core.domain.Campaign;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(CampaignGroup.class)
-public class CampaignGroup_ {
+@StaticMetamodel(Campaign.class)
+public class CampaignAttributes {
 
-    public static volatile SingularAttribute<CampaignGroup, Long> id;
-    public static volatile SingularAttribute<CampaignGroup, String> title;
+    public static volatile SingularAttribute<Campaign, Long> id;
+    public static volatile SingularAttribute<Campaign, String> title;
+    public static volatile SingularAttribute<Campaign, String> state;
 
 
     public static String id() {
@@ -20,6 +21,10 @@ public class CampaignGroup_ {
 
     public static String title() {
         return title.getName();
+    }
+
+    public static String state() {
+        return state.getName();
     }
 
 }

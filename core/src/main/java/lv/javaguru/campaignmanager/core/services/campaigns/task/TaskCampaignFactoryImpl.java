@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.TaskCampaignDAO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
@@ -8,8 +9,7 @@ import lv.javaguru.campaignmanager.core.services.campaigns.CampaignFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static lv.javaguru.campaignmanager.core.domain.builders.
-        TaskCampaignBuilder.createTaskCampaign;
+import static lv.javaguru.campaignmanager.core.domain.builders.TaskCampaignBuilder.createTaskCampaign;
 
 @Component
 class TaskCampaignFactoryImpl implements TaskCampaignFactory {
@@ -18,8 +18,9 @@ class TaskCampaignFactoryImpl implements TaskCampaignFactory {
     @Autowired private TaskCampaignDAO dao;
 
     @Override
-    public TaskCampaign create(CampaignTitle title) {
-        Campaign campaign = campaignFactory.create(title);
+    public TaskCampaign create(CampaignGroupId campaignGroupId,
+                               CampaignTitle title) {
+        Campaign campaign = campaignFactory.create(campaignGroupId, title);
         TaskCampaign taskCampaign = buildTaskCampaign(campaign);
         dao.create(taskCampaign);
         return taskCampaign;

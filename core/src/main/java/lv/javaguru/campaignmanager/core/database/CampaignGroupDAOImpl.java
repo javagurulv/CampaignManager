@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.database;
 
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
-import lv.javaguru.campaignmanager.core.domain.metamodel.CampaignGroup_;
+import lv.javaguru.campaignmanager.core.domain.metamodel.CampaignGroupAttributes;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ class CampaignGroupDAOImpl
     public Optional<CampaignGroup> findByTitle(String title) {
         CampaignGroup campaignGroup = (CampaignGroup) getCurrentSession()
                 .createCriteria(CampaignGroup.class)
-                .add(Restrictions.eq(CampaignGroup_.title(), title))
+                .add(Restrictions.eq(CampaignGroupAttributes.title(), title))
                 .uniqueResult();
         return Optional.ofNullable(campaignGroup);
     }

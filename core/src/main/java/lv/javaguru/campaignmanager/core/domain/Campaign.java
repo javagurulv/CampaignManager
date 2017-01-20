@@ -1,14 +1,17 @@
 package lv.javaguru.campaignmanager.core.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Column;
-import javax.persistence.Enumerated;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "campaigns")
@@ -29,6 +32,16 @@ public class Campaign extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "state", nullable = false)
     private CampaignState state;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private CampaignGroup campaignGroup;
+
+    @Column(name = "start_date")
+    private Date startDate = new Date();
+
+    @Column(name = "end_date")
+    private Date endDate = new Date();
 
 
     @Override
@@ -55,6 +68,34 @@ public class Campaign extends BaseEntity {
 
     public void setState(CampaignState state) {
         this.state = state;
+    }
+
+    public CampaignGroup getCampaignGroup() {
+        return campaignGroup;
+    }
+
+    public void setCampaignGroup(CampaignGroup campaignGroup) {
+        this.campaignGroup = campaignGroup;
+    }
+
+    public boolean hasGroup() {
+        return campaignGroup != null;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public boolean isActive() {

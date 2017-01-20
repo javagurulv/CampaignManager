@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignDAO;
 import org.junit.Rule;
@@ -27,20 +28,38 @@ public class CampaignValidatorImplTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private static final String TITLE = "title";
+    private static final Long GROUP_ID = 1L;
 
+
+    @Test
+    public void shouldThrowExceptionWhenGroupIsNull() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Campaign Group must be specified");
+        validator.validateOnCreate(null, new CampaignTitle(TITLE));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenGroupIdIsNull() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Campaign Group must be specified");
+        validator.validateOnCreate(new CampaignGroupId(null), new CampaignTitle(TITLE));
+    }
 
     @Test
     public void shouldThrowExceptionWhenTitleIsNull() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign title must be specified");
-        validator.validateOnCreate(null);
+        validator.validateOnCreate(new CampaignGroupId(GROUP_ID), null);
     }
 
     @Test
     public void shouldThrowExceptionWhenTitleIsBlank() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign title must be specified");
-        validator.validateOnCreate(new CampaignTitle(""));
+        validator.validateOnCreate(
+                new CampaignGroupId(GROUP_ID),
+                new CampaignTitle("")
+        );
     }
 
     @Test
@@ -49,13 +68,19 @@ public class CampaignValidatorImplTest {
                 .when(campaignDAO).findByTitle(TITLE);
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign with same title already exist");
-        validator.validateOnCreate(new CampaignTitle(TITLE));
+        validator.validateOnCreate(
+                new CampaignGroupId(GROUP_ID),
+                new CampaignTitle(TITLE)
+        );
     }
 
     @Test
     public void shouldSucceed() {
         doReturn(Optional.empty()).when(campaignDAO).findByTitle(TITLE);
-        validator.validateOnCreate(new CampaignTitle(TITLE));
+        validator.validateOnCreate(
+                new CampaignGroupId(GROUP_ID),
+                new CampaignTitle(TITLE)
+        );
     }
 
 }
