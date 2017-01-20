@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.database;
 
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
-import lv.javaguru.campaignmanager.core.domain.CampaignGroup_;
+import lv.javaguru.campaignmanager.core.domain.metamodel.CampaignGroup_;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Component;
 

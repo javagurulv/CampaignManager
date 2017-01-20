@@ -1,4 +1,6 @@
-package lv.javaguru.campaignmanager.core.domain;
+package lv.javaguru.campaignmanager.core.domain.metamodel;
+
+import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
