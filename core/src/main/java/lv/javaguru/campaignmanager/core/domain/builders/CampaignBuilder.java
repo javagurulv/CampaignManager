@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.domain.builders;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
 
@@ -32,6 +33,11 @@ public class CampaignBuilder {
 
     public CampaignBuilder withTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public CampaignBuilder withTitle(CampaignTitle campaignTitle) {
+        this.title = campaignTitle.get();
         return this;
     }
 

@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.CampaignDAO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
@@ -16,14 +17,14 @@ class CampaignFactoryImpl implements CampaignFactory {
     @Autowired private CampaignDAO dao;
 
     @Override
-    public Campaign create(String title) {
+    public Campaign create(CampaignTitle title) {
         validator.validateOnCreate(title);
         Campaign campaign = buildCampaign(title);
         dao.create(campaign);
         return campaign;
     }
 
-    private Campaign buildCampaign(String title) {
+    private Campaign buildCampaign(CampaignTitle title) {
         return createCampaign()
                     .withTitle(title)
                     .withState(CampaignState.NOT_ACTIVE)

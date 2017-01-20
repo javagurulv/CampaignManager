@@ -39,6 +39,8 @@ subprojects {
 project(":api") {
     dependencies {
 	    compile libs.spring_boot_starter_jersey
+
+        testCompile libs.spring_boot_starter_test
     }
 }
 

@@ -1,5 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
+import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.database.TaskCampaignDAO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
@@ -17,7 +18,7 @@ class TaskCampaignFactoryImpl implements TaskCampaignFactory {
     @Autowired private TaskCampaignDAO dao;
 
     @Override
-    public TaskCampaign create(String title) {
+    public TaskCampaign create(CampaignTitle title) {
         Campaign campaign = campaignFactory.create(title);
         TaskCampaign taskCampaign = buildTaskCampaign(campaign);
         dao.create(taskCampaign);
