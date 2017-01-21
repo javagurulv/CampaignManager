@@ -2,8 +2,8 @@ package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.CampaignGroupResource;
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-
-import static lv.javaguru.campaignmanager.api.dto.builders.CampaignGroupDTOBuilder.createCampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.CreateCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.EditCampaignGroupRequest;
 
 public class CampaignGroupActions {
 
@@ -14,15 +14,16 @@ public class CampaignGroupActions {
     }
 
     public CampaignGroupDTO create(String groupTitle) {
-        return resource.create(
-                createCampaignGroupDTO().withTitle(groupTitle).build()
-        );
+        CreateCampaignGroupRequest request = new CreateCampaignGroupRequest();
+        request.setGroupTitle(groupTitle);
+        return resource.create(request);
     }
 
     public void edit(Long campaignGroupId, String newGroupTitle) {
-        resource.edit(campaignGroupId,
-                createCampaignGroupDTO().withTitle(newGroupTitle).build()
-        );
+        EditCampaignGroupRequest request = new EditCampaignGroupRequest();
+        request.setCampaignGroupId(campaignGroupId);
+        request.setNewGroupTitle(newGroupTitle);
+        resource.edit(campaignGroupId, request);
     }
 
     public CampaignGroupDTO get(Long campaignGroupId) {

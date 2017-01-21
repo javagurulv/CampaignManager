@@ -18,8 +18,7 @@ class TaskCampaignFactoryImpl implements TaskCampaignFactory {
     @Autowired private TaskCampaignRepository repository;
 
     @Override
-    public TaskCampaign create(CampaignGroupId campaignGroupId,
-                               CampaignTitle title) {
+    public TaskCampaign create(CampaignGroupId campaignGroupId, CampaignTitle title) {
         Campaign campaign = campaignFactory.create(campaignGroupId, title);
         TaskCampaign taskCampaign = buildTaskCampaign(campaign);
         return repository.save(taskCampaign);

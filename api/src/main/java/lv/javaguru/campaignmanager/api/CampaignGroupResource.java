@@ -1,14 +1,16 @@
 package lv.javaguru.campaignmanager.api;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.CreateCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.EditCampaignGroupRequest;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
-import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -19,13 +21,13 @@ public interface CampaignGroupResource {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
-    CampaignGroupDTO create(CampaignGroupDTO campaignGroup);
+    CampaignGroupDTO create(CreateCampaignGroupRequest createGroupRequest);
 
     @PUT
     @Consumes(APPLICATION_JSON)
     @Path("/campaignGroups/{campaignGroupId}")
     void edit(@PathParam("campaignGroupId") Long campaignGroupId,
-              CampaignGroupDTO campaignGroup);
+              EditCampaignGroupRequest editGroupRequest);
 
     @GET
     @Produces(APPLICATION_JSON)

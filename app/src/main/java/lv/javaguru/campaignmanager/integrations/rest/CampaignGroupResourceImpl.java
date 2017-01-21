@@ -1,7 +1,8 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.RESTResource;
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.CreateCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.EditCampaignGroupRequest;
 import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.CommandExecutor;
@@ -34,9 +35,9 @@ public class CampaignGroupResourceImpl {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
-    public Response create(CampaignGroupDTO campaignGroup) {
+    public Response create(CreateCampaignGroupRequest createGroupRequest) {
         CreateCampaignGroupCommand command = new CreateCampaignGroupCommand(
-                new GroupTitle(campaignGroup.getTitle())
+                new GroupTitle(createGroupRequest.getGroupTitle())
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
         return Response.status(Response.Status.CREATED).entity(result.getCampaignGroup()).build();
@@ -46,10 +47,10 @@ public class CampaignGroupResourceImpl {
     @Consumes(APPLICATION_JSON)
     @Path("/campaignGroups/{campaignGroupId}")
     public Response edit(@PathParam("campaignGroupId") Long campaignGroupId,
-                         CampaignGroupDTO campaignGroup) {
+                         EditCampaignGroupRequest editGroupRequest) {
         EditCampaignGroupCommand editCommand = new EditCampaignGroupCommand(
                 new CampaignGroupId(campaignGroupId),
-                new GroupTitle(campaignGroup.getTitle())
+                new GroupTitle(editGroupRequest.getNewGroupTitle())
         );
         commandExecutor.execute(editCommand);
         return Response.status(Response.Status.OK).build();

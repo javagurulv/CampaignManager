@@ -20,8 +20,7 @@ class CampaignFactoryImpl implements CampaignFactory {
     @Autowired private CampaignRepository campaignRepository;
 
     @Override
-    public Campaign create(CampaignGroupId campaignGroupId,
-                           CampaignTitle title) {
+    public Campaign create(CampaignGroupId campaignGroupId, CampaignTitle title) {
         validator.validateOnCreate(campaignGroupId, title);
         CampaignGroup group = entityRepository.getRequired(CampaignGroup.class, campaignGroupId.get());
         Campaign campaign = buildCampaign(group, title);
