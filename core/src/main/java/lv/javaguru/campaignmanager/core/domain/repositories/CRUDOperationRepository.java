@@ -1,8 +1,8 @@
-package lv.javaguru.campaignmanager.core.database;
+package lv.javaguru.campaignmanager.core.domain.repositories;
 
 import java.util.Optional;
 
-public interface CRUDOperationDAO<E, K> {
+public interface CRUDOperationRepository<E, K> {
 
     void create(E entity);
 

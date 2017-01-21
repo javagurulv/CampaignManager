@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.core.database;
+package lv.javaguru.campaignmanager.core.domain.repositories;
 
 import lv.javaguru.campaignmanager.core.CoreApplicationTest;
 import org.hibernate.SessionFactory;
@@ -12,6 +12,6 @@ public abstract class DatabaseHibernateTest extends CoreApplicationTest {
     protected SessionFactory sessionFactory;
 
     @Autowired
-    protected CampaignGroupDAO campaignGroupDAO;
+    protected CampaignGroupRepository campaignGroupRepository;
 
 }

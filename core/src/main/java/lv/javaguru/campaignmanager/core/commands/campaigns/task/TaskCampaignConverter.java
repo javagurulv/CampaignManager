@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.campaigns.task;
 
 import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
-import lv.javaguru.campaignmanager.core.commands.campaigns.CampaignConverter;
+import lv.javaguru.campaignmanager.core.domain.converters.CampaignConverter;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

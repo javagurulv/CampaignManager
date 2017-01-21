@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
 import lv.javaguru.campaignmanager.api.vo.GroupTitle;
-import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
+import lv.javaguru.campaignmanager.core.domain.repositories.CampaignGroupRepository;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -18,7 +18,7 @@ import static org.mockito.Mockito.doReturn;
 @RunWith(MockitoJUnitRunner.class)
 public class CampaignGroupValidatorImplTest {
 
-    @Mock private CampaignGroupDAO campaignGroupDAO;
+    @Mock private CampaignGroupRepository campaignGroupRepository;
 
     @InjectMocks
     private CampaignGroupValidator validator = new CampaignGroupValidatorImpl();
@@ -44,7 +44,7 @@ public class CampaignGroupValidatorImplTest {
     @Test
     public void shouldThrowExceptionWhenCampaignGroupWithSameTitleAlreadyExist() {
         doReturn(Optional.of(createCampaignGroup().build()))
-                .when(campaignGroupDAO).findByTitle(TITLE);
+                .when(campaignGroupRepository).findByTitle(TITLE);
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Campaign Group with same title already exist");
         validator.validateOnCreate(new GroupTitle(TITLE));
@@ -52,7 +52,7 @@ public class CampaignGroupValidatorImplTest {
 
     @Test
     public void shouldSucceed() {
-        doReturn(Optional.empty()).when(campaignGroupDAO).findByTitle(TITLE);
+        doReturn(Optional.empty()).when(campaignGroupRepository).findByTitle(TITLE);
         validator.validateOnCreate(new GroupTitle(TITLE));
     }
 

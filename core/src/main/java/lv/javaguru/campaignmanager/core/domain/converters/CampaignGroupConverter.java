@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.core.commands.campaigngroups;
+package lv.javaguru.campaignmanager.core.domain.converters;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 import static lv.javaguru.campaignmanager.api.dto.builders.CampaignGroupDTOBuilder.createCampaignGroupDTO;
 
 @Component
-class CampaignGroupConverter {
+public class CampaignGroupConverter {
 
-    CampaignGroupDTO convert(CampaignGroup campaignGroup) {
+    public CampaignGroupDTO convert(CampaignGroup campaignGroup) {
         return createCampaignGroupDTO()
                 .withId(campaignGroup.getId())
                 .withTitle(campaignGroup.getTitle())

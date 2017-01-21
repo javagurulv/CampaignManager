@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.core.database;
+package lv.javaguru.campaignmanager.core.domain.repositories;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -8,8 +8,8 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Optional;
 
-abstract class CRUDOperationDAOImpl<E, K extends Serializable>
-        implements CRUDOperationDAO<E, K> {
+abstract class CRUDOperationRepositoryImpl<E, K extends Serializable>
+        implements CRUDOperationRepository<E, K> {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -17,7 +17,7 @@ abstract class CRUDOperationDAOImpl<E, K extends Serializable>
     protected Class daoType;
 
 
-    public CRUDOperationDAOImpl() {
+    public CRUDOperationRepositoryImpl() {
         daoType = (Class) ((ParameterizedType) getClass()
                 .getGenericSuperclass())
                 .getActualTypeArguments()[0];

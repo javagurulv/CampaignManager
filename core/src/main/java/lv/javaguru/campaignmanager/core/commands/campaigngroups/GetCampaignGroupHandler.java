@@ -3,6 +3,7 @@ package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import lv.javaguru.campaignmanager.core.DomainCommandHandler;
+import lv.javaguru.campaignmanager.core.domain.converters.CampaignGroupConverter;
 import lv.javaguru.campaignmanager.core.services.campaigngroups.CampaignGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

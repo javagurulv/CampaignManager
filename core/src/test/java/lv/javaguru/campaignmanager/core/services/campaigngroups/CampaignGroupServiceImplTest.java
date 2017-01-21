@@ -2,8 +2,8 @@ package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
 import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.GroupTitle;
-import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
+import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verify;
 public class CampaignGroupServiceImplTest {
 
     @Mock private CampaignGroupValidator validator;
-    @Mock private CampaignGroupDAO dao;
+    @Mock private EntityRepository repository;
 
     @InjectMocks
     private CampaignGroupService service = new CampaignGroupServiceImpl();
@@ -35,7 +35,7 @@ public class CampaignGroupServiceImplTest {
     @Test
     public void editShouldInvokeValidate() {
         CampaignGroup campaignGroup = createCampaignGroup().build();
-        doReturn(campaignGroup).when(dao).getRequired(CAMPAIGN_GROUP_ID.get());
+        doReturn(campaignGroup).when(repository).getRequired(CampaignGroup.class, CAMPAIGN_GROUP_ID.get());
         service.edit(CAMPAIGN_GROUP_ID, GROUP_TITLE);
         verify(validator).validateOnEdit(campaignGroup, GROUP_TITLE);
     }
@@ -44,7 +44,7 @@ public class CampaignGroupServiceImplTest {
     public void editShouldUpdateGroupTitle() {
         CampaignGroup campaignGroup = createCampaignGroup().build();
         assertThat(campaignGroup.getTitle(), is(nullValue()));
-        doReturn(campaignGroup).when(dao).getRequired(CAMPAIGN_GROUP_ID.get());
+        doReturn(campaignGroup).when(repository).getRequired(CampaignGroup.class, CAMPAIGN_GROUP_ID.get());
         service.edit(CAMPAIGN_GROUP_ID, GROUP_TITLE);
         assertThat(campaignGroup.getTitle(), is(TITLE));
     }
@@ -53,7 +53,7 @@ public class CampaignGroupServiceImplTest {
     public void editShouldUpdateUpdatedDate() {
         CampaignGroup campaignGroup = createCampaignGroup().build();
         assertThat(campaignGroup.getUpdatedDate(), is(nullValue()));
-        doReturn(campaignGroup).when(dao).getRequired(CAMPAIGN_GROUP_ID.get());
+        doReturn(campaignGroup).when(repository).getRequired(CampaignGroup.class, CAMPAIGN_GROUP_ID.get());
         service.edit(CAMPAIGN_GROUP_ID, GROUP_TITLE);
         assertThat(campaignGroup.getUpdatedDate(), is(notNullValue()));
     }

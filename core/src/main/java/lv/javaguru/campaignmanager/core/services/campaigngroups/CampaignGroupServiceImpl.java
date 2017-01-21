@@ -2,8 +2,8 @@ package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
 import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.GroupTitle;
-import lv.javaguru.campaignmanager.core.database.CampaignGroupDAO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
+import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +13,11 @@ import java.util.Date;
 class CampaignGroupServiceImpl implements CampaignGroupService {
 
     @Autowired private CampaignGroupValidator validator;
-    @Autowired private CampaignGroupDAO dao;
+    @Autowired private EntityRepository repository;
 
     @Override
     public CampaignGroup get(CampaignGroupId campaignGroupId) {
-        return dao.getRequired(campaignGroupId.get());
+        return repository.getRequired(CampaignGroup.class, campaignGroupId.get());
     }
 
     @Override

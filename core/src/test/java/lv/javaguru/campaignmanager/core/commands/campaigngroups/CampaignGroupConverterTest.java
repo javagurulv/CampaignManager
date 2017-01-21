@@ -2,6 +2,7 @@ package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
+import lv.javaguru.campaignmanager.core.domain.converters.CampaignGroupConverter;
 import org.junit.Test;
 
 import java.util.Date;

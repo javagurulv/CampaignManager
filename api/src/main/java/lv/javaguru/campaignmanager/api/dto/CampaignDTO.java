@@ -8,6 +8,7 @@ public class CampaignDTO implements Serializable {
     private Long id;
     private String title;
     private String state;
+    private CampaignGroupDTO campaignGroupDTO;
     private Date createdDate;
     private Date updatedDate;
 
@@ -34,6 +35,14 @@ public class CampaignDTO implements Serializable {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public CampaignGroupDTO getCampaignGroupDTO() {
+        return campaignGroupDTO;
+    }
+
+    public void setCampaignGroupDTO(CampaignGroupDTO campaignGroupDTO) {
+        this.campaignGroupDTO = campaignGroupDTO;
     }
 
     public Date getCreatedDate() {

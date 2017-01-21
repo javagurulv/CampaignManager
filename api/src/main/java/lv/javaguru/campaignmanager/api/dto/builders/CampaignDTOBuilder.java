@@ -1,6 +1,7 @@
 package lv.javaguru.campaignmanager.api.dto.builders;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 
 import java.util.Date;
 
@@ -9,6 +10,7 @@ public class CampaignDTOBuilder {
     private Long id;
     private String title;
     private String state;
+    private CampaignGroupDTO campaignGroupDTO;
     private Date createdDate;
     private Date updatedDate;
 
@@ -23,6 +25,7 @@ public class CampaignDTOBuilder {
         dto.setId(id);
         dto.setTitle(title);
         dto.setState(state);
+        dto.setCampaignGroupDTO(campaignGroupDTO);
         dto.setCreatedDate(createdDate);
         dto.setUpdatedDate(updatedDate);
         return dto;
@@ -40,6 +43,11 @@ public class CampaignDTOBuilder {
 
     public CampaignDTOBuilder withState(String state) {
         this.state = state;
+        return this;
+    }
+
+    public CampaignDTOBuilder with(CampaignGroupDTO campaignGroupDTO) {
+        this.campaignGroupDTO = campaignGroupDTO;
         return this;
     }
 
