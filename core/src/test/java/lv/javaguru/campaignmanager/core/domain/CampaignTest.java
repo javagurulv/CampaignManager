@@ -29,6 +29,12 @@ public class CampaignTest {
         assertThat(createCampaign(CampaignState.CLOSED).isClosed(), is(true));
     }
 
+    @Test
+    public void isStateChangeAllowed() {
+        Campaign campaign = createCampaign(CampaignState.NOT_ACTIVE);
+        assertThat(campaign.isStateChangeAllowed(CampaignState.ACTIVE), is(true));
+    }
+
     private Campaign createCampaign(CampaignState state) {
         return CampaignBuilder.createCampaign().withState(state).build();
     }

@@ -25,7 +25,8 @@ public class TaskCampaignServiceImpl implements TaskCampaignService {
 
         checkState(taskCampaign.getCampaign() != null, "Campaign must be defined");
         checkState(taskCampaign.getCampaign().hasGroup(), "Campaign Group must be defined");
-        checkState(taskCampaign.getCampaign().getState().isTransitionAllowed(CampaignState.ACTIVE), "State Transition to ACTIVE not allowed");
+        checkState(taskCampaign.getCampaign().isStateChangeAllowed(CampaignState.ACTIVE),
+                "State Transition to ACTIVE not allowed");
 
         taskCampaign.getCampaign().activate();
     }

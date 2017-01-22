@@ -114,4 +114,8 @@ public class Campaign extends BaseEntity {
         return state == CampaignState.CLOSED;
     }
 
+    public boolean isStateChangeAllowed(CampaignState newState) {
+        return state.isTransitionAllowed(newState);
+    }
+
 }
