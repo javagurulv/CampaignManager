@@ -26,6 +26,7 @@ class TaskCampaignFactoryImpl implements TaskCampaignFactory {
 
     private TaskCampaign buildTaskCampaign(Campaign campaign) {
         return createTaskCampaign()
+                    .withId(campaign.getId())
                     .withCampaign(campaign).build();
     }
 

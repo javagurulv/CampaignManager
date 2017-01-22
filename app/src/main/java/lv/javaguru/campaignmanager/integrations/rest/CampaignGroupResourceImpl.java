@@ -35,9 +35,9 @@ public class CampaignGroupResourceImpl {
     @Consumes(APPLICATION_JSON)
     @Produces(APPLICATION_JSON)
     @Path("/campaignGroups")
-    public Response create(CreateCampaignGroupRequest createGroupRequest) {
+    public Response create(CreateCampaignGroupRequest request) {
         CreateCampaignGroupCommand command = new CreateCampaignGroupCommand(
-                new GroupTitle(createGroupRequest.getGroupTitle())
+                new GroupTitle(request.getGroupTitle())
         );
         CreateCampaignGroupResult result = commandExecutor.execute(command);
         return Response.status(Response.Status.CREATED).entity(result.getCampaignGroup()).build();

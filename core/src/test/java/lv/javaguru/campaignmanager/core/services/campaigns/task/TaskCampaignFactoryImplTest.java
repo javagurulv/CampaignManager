@@ -38,12 +38,16 @@ public class TaskCampaignFactoryImplTest {
 
     @Test
     public void shouldCreateCampaign() {
+        Campaign campaign = createCampaign().build();
+        doReturn(campaign).when(campaignFactory).create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         factory.create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         verify(campaignFactory).create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
     }
 
     @Test
     public void shouldCreate() {
+        Campaign campaign = createCampaign().build();
+        doReturn(campaign).when(campaignFactory).create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         when(repository.save(any(TaskCampaign.class))).then(returnsFirstArg());
         TaskCampaign taskCampaign = factory.create(CAMPAIGN_GROUP_ID, CAMPAIGN_TITLE);
         verify(repository).save(taskCampaign);
