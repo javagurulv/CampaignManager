@@ -7,4 +7,6 @@ public interface TaskCampaignService {
 
     TaskCampaign get(TaskCampaignId taskCampaignId);
 
+    void activate(TaskCampaignId taskCampaignId);
+
 }

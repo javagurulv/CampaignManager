@@ -98,6 +98,10 @@ public class Campaign extends BaseEntity {
         this.endDate = endDate;
     }
 
+    public void activate() {
+        this.state = CampaignState.ACTIVE;
+    }
+
     public boolean isActive() {
         return state == CampaignState.ACTIVE;
     }

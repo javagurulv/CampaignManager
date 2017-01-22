@@ -2,6 +2,7 @@ package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
+import lv.javaguru.campaignmanager.core.domain.CampaignState;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -54,6 +55,7 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
         assertThat(campaign.getId(), is(notNullValue()));
         assertThat(campaign.getCampaign(), is(notNullValue()));
         assertThat(campaign.getCampaign().getTitle(), is(campaignTitle));
+        assertThat(campaign.getCampaign().getState(), is(CampaignState.NOT_ACTIVE.toString()));
         assertThat(campaign.getCampaign().getCreatedDate(), is(notNullValue()));
         assertThat(campaign.getCreatedDate(), is(notNullValue()));
     }
