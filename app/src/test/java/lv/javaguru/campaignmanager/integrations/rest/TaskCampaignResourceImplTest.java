@@ -60,4 +60,18 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
         assertThat(campaign.getCreatedDate(), is(notNullValue()));
     }
 
+    @Test
+    public void shouldActivateTaskCampaign() {
+        CampaignGroupDTO campaignGroup = campaignGroupActions.create(RandomStringUtils.random(TITLE_LENGTH));
+
+        TaskCampaignDTO campaign = taskCampaignActions.create(
+                campaignGroup.getId(), RandomStringUtils.random(TITLE_LENGTH)
+        );
+        assertThat(campaign.getCampaign().getState(), is(CampaignState.NOT_ACTIVE.toString()));
+
+        taskCampaignActions.activate(campaign.getId());
+        campaign = taskCampaignActions.get(campaign.getId());
+        assertThat(campaign.getCampaign().getState(), is(CampaignState.ACTIVE.toString()));
+    }
+
 }

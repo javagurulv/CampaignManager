@@ -6,6 +6,7 @@ import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.api.vo.TaskCampaignId;
 import lv.javaguru.campaignmanager.core.CommandExecutor;
+import lv.javaguru.campaignmanager.core.commands.campaigns.task.ActivateTaskCampaignCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.CreateTaskCampaignCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.CreateTaskCampaignResult;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.GetTaskCampaignCommand;
@@ -51,6 +52,16 @@ public class TaskCampaignResourceImpl {
         );
         GetTaskCampaignResult result = commandExecutor.execute(command);
         return Response.status(Response.Status.OK).entity(result.getTaskCampaign()).build();
+    }
+
+    @POST
+    @Path("/taskCampaigns/{taskCampaignId}/activate")
+    public Response activate(@PathParam("taskCampaignId") Long taskCampaignId) {
+        ActivateTaskCampaignCommand command = new ActivateTaskCampaignCommand(
+                new TaskCampaignId(taskCampaignId)
+        );
+        commandExecutor.execute(command);
+        return Response.status(Response.Status.OK).build();
     }
 
 }

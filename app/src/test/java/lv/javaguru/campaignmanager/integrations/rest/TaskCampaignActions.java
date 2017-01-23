@@ -23,4 +23,8 @@ public class TaskCampaignActions {
         return resource.get(taskCampaignId);
     }
 
+    public void activate(Long taskCampaignId) {
+        resource.activate(taskCampaignId);
+    }
+
 }

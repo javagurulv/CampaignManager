@@ -26,4 +26,8 @@ public interface TaskCampaignResource {
     @Path("/taskCampaigns/{taskCampaignId}")
     TaskCampaignDTO get(@PathParam("taskCampaignId") Long taskCampaignId);
 
+    @POST
+    @Path("/taskCampaigns/{taskCampaignId}/activate")
+    void activate(@PathParam("taskCampaignId") Long taskCampaignId);
+
 }
