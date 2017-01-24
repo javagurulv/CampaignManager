@@ -1,7 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
 import lv.javaguru.campaignmanager.api.vo.TaskCampaignId;
-import lv.javaguru.campaignmanager.core.domain.CampaignState;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,17 @@ public class TaskCampaignServiceImpl implements TaskCampaignService {
     @Override
     public void activate(TaskCampaignId taskCampaignId) {
         TaskCampaign taskCampaign = get(taskCampaignId);
-
         checkState(taskCampaign.getCampaign() != null, "Campaign must be defined");
         checkState(taskCampaign.getCampaign().hasGroup(), "Campaign Group must be defined");
-        checkState(taskCampaign.getCampaign().isStateChangeAllowed(CampaignState.ACTIVE),
-                "State Transition to ACTIVE not allowed");
-
         taskCampaign.getCampaign().activate();
+    }
+
+    @Override
+    public void deactivate(TaskCampaignId taskCampaignId) {
+        TaskCampaign taskCampaign = get(taskCampaignId);
+        checkState(taskCampaign.getCampaign() != null, "Campaign must be defined");
+        checkState(taskCampaign.getCampaign().hasGroup(), "Campaign Group must be defined");
+        taskCampaign.getCampaign().deactivate();
     }
 
 }

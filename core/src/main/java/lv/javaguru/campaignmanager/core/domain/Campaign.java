@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.Date;
 
+import static com.google.common.base.Preconditions.checkState;
+
 @Entity
 @Table(name = "campaigns")
 public class Campaign extends BaseEntity {
@@ -99,7 +101,15 @@ public class Campaign extends BaseEntity {
     }
 
     public void activate() {
+        checkState(isStateChangeAllowed(CampaignState.ACTIVE),
+                "State Transition to ACTIVE not allowed");
         this.state = CampaignState.ACTIVE;
+    }
+
+    public void deactivate() {
+        checkState(isStateChangeAllowed(CampaignState.NOT_ACTIVE),
+                "State Transition to NOT_ACTIVE not allowed");
+        this.state = CampaignState.NOT_ACTIVE;
     }
 
     public boolean isActive() {

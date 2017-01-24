@@ -106,4 +106,76 @@ public class TaskCampaignServiceImplTest {
         assertThat(taskCampaign.getCampaign().isActive(), is(true));
     }
 
+
+    @Test
+    public void shouldNotAllowDeactivateWhenCampaignIsNull() {
+        TaskCampaign taskCampaign = createTaskCampaign().build();
+        assertThat(taskCampaign.getCampaign(), is(nullValue()));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("Campaign must be defined");
+        service.deactivate(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowDeactivateWhenNoGroup() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                ).build();
+        assertThat(taskCampaign.getCampaign().hasGroup(), is(false));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("Campaign Group must be defined");
+        service.deactivate(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowDeactivateWhenCampaignInCLOSEDState() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.CLOSED)
+                ).build();
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("State Transition to NOT_ACTIVE not allowed");
+        service.deactivate(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowDeactivateWhenCampaignInNOT_ACTIVEState() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.NOT_ACTIVE)
+                ).build();
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("State Transition to NOT_ACTIVE not allowed");
+        service.deactivate(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldDeactivate() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.ACTIVE)
+                ).build();
+        assertThat(taskCampaign.getCampaign().isActive(), is(true));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        service.deactivate(TASK_CAMPAIGN_ID);
+
+        assertThat(taskCampaign.getCampaign().isNotActive(), is(true));
+    }
+
 }

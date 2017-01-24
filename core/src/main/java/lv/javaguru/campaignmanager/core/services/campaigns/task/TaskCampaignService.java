@@ -9,4 +9,6 @@ public interface TaskCampaignService {
 
     void activate(TaskCampaignId taskCampaignId);
 
+    void deactivate(TaskCampaignId taskCampaignId);
+
 }
