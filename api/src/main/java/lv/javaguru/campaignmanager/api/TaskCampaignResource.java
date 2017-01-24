@@ -30,4 +30,8 @@ public interface TaskCampaignResource {
     @Path("/taskCampaigns/{taskCampaignId}/activate")
     void activate(@PathParam("taskCampaignId") Long taskCampaignId);
 
+    @POST
+    @Path("/taskCampaigns/{taskCampaignId}/deactivate")
+    void deactivate(@PathParam("taskCampaignId") Long taskCampaignId);
+
 }
