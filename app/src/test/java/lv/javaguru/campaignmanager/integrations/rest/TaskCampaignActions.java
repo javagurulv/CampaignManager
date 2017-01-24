@@ -1,6 +1,7 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.TaskCampaignResource;
+import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.api.dto.CreateTaskCampaignRequest;
 import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
 
@@ -12,9 +13,9 @@ public class TaskCampaignActions {
         this.resource = resource;
     }
 
-    public TaskCampaignDTO create(Long groupId, String campaignTitle) {
+    public TaskCampaignDTO create(CampaignGroupDTO group, String campaignTitle) {
         CreateTaskCampaignRequest request = new CreateTaskCampaignRequest();
-        request.setCampaignGroupId(groupId);
+        request.setCampaignGroupId(group.getId());
         request.setCampaignTitle(campaignTitle);
         return resource.create(request);
     }
@@ -23,8 +24,12 @@ public class TaskCampaignActions {
         return resource.get(taskCampaignId);
     }
 
-    public void activate(Long taskCampaignId) {
-        resource.activate(taskCampaignId);
+    public void activate(TaskCampaignDTO taskCampaign) {
+        resource.activate(taskCampaign.getId());
+    }
+
+    public void deactivate(TaskCampaignDTO taskCampaign) {
+        resource.deactivate(taskCampaign.getId());
     }
 
 }

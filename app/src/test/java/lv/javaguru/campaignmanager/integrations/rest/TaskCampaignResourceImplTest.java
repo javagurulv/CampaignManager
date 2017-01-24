@@ -24,12 +24,11 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
 
     @Test
     public void shouldCreateTaskCampaign() {
-        String groupTitle = RandomStringUtils.random(TITLE_LENGTH);
-        CampaignGroupDTO campaignGroup = campaignGroupActions.create(groupTitle);
+        CampaignGroupDTO campaignGroup = createGroup();
 
         String campaignTitle = RandomStringUtils.random(TITLE_LENGTH);
         TaskCampaignDTO campaign = taskCampaignActions.create(
-                campaignGroup.getId(), campaignTitle
+                campaignGroup, campaignTitle
         );
 
         assertThat(campaign, is(notNullValue()));
@@ -42,12 +41,11 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
 
     @Test
     public void shouldGetTaskCampaign() {
-        String groupTitle = RandomStringUtils.random(TITLE_LENGTH);
-        CampaignGroupDTO campaignGroup = campaignGroupActions.create(groupTitle);
+        CampaignGroupDTO campaignGroup = createGroup();
 
         String campaignTitle = RandomStringUtils.random(TITLE_LENGTH);
         TaskCampaignDTO campaign = taskCampaignActions.create(
-                campaignGroup.getId(), campaignTitle
+                campaignGroup, campaignTitle
         );
 
         campaign = taskCampaignActions.get(campaign.getId());
@@ -62,16 +60,22 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
 
     @Test
     public void shouldActivateTaskCampaign() {
-        CampaignGroupDTO campaignGroup = campaignGroupActions.create(RandomStringUtils.random(TITLE_LENGTH));
-
-        TaskCampaignDTO campaign = taskCampaignActions.create(
-                campaignGroup.getId(), RandomStringUtils.random(TITLE_LENGTH)
-        );
+        CampaignGroupDTO group = createGroup();
+        TaskCampaignDTO campaign = createCampaign(group);
         assertThat(campaign.getCampaign().getState(), is(CampaignState.NOT_ACTIVE.toString()));
-
-        taskCampaignActions.activate(campaign.getId());
-        campaign = taskCampaignActions.get(campaign.getId());
+        activateTaskCampaign(campaign);
+        campaign = getTaskCampaign(campaign.getId());
         assertThat(campaign.getCampaign().getState(), is(CampaignState.ACTIVE.toString()));
+    }
+
+    @Test
+    public void shouldDeactivateTaskCampaign() {
+        CampaignGroupDTO group = createGroup();
+        TaskCampaignDTO campaign = createCampaign(group);
+        activateTaskCampaign(campaign);
+        deactivateTaskCampaign(campaign);
+        campaign = getTaskCampaign(campaign.getId());
+        assertThat(campaign.getCampaign().getState(), is(CampaignState.NOT_ACTIVE.toString()));
     }
 
 }
