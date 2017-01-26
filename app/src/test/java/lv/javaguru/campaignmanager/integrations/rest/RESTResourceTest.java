@@ -60,6 +60,10 @@ public abstract class RESTResourceTest {
         taskCampaignActions.deactivate(taskCampaign);
     }
 
+    protected void closeTaskCampaign(TaskCampaignDTO taskCampaign) {
+        taskCampaignActions.close(taskCampaign);
+    }
+
     protected TaskCampaignDTO getTaskCampaign(Long taskCampaignId) {
         return taskCampaignActions.get(taskCampaignId);
     }

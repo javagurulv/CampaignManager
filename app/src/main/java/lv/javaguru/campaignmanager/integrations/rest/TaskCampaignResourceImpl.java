@@ -7,6 +7,7 @@ import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.api.vo.TaskCampaignId;
 import lv.javaguru.campaignmanager.core.CommandExecutor;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.ActivateTaskCampaignCommand;
+import lv.javaguru.campaignmanager.core.commands.campaigns.task.CloseTaskCampaignCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.CreateTaskCampaignCommand;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.CreateTaskCampaignResult;
 import lv.javaguru.campaignmanager.core.commands.campaigns.task.DeactivateTaskCampaignCommand;
@@ -69,6 +70,16 @@ public class TaskCampaignResourceImpl {
     @Path("/taskCampaigns/{taskCampaignId}/deactivate")
     public Response deactivate(@PathParam("taskCampaignId") Long taskCampaignId) {
         DeactivateTaskCampaignCommand command = new DeactivateTaskCampaignCommand(
+                new TaskCampaignId(taskCampaignId)
+        );
+        commandExecutor.execute(command);
+        return Response.status(Response.Status.OK).build();
+    }
+
+    @POST
+    @Path("/taskCampaigns/{taskCampaignId}/close")
+    public Response close(@PathParam("taskCampaignId") Long taskCampaignId) {
+        CloseTaskCampaignCommand command = new CloseTaskCampaignCommand(
                 new TaskCampaignId(taskCampaignId)
         );
         commandExecutor.execute(command);

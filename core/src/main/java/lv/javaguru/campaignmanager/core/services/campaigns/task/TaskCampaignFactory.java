@@ -6,6 +6,7 @@ import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 
 public interface TaskCampaignFactory {
 
-    TaskCampaign create(CampaignGroupId campaignGroupId, CampaignTitle title);
+    TaskCampaign create(CampaignGroupId campaignGroupId,
+                        CampaignTitle title);
 
 }

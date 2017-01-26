@@ -112,6 +112,12 @@ public class Campaign extends BaseEntity {
         this.state = CampaignState.NOT_ACTIVE;
     }
 
+    public void close() {
+        checkState(isStateChangeAllowed(CampaignState.CLOSED),
+                "State Transition to CLOSED not allowed");
+        this.state = CampaignState.CLOSED;
+    }
+
     public boolean isActive() {
         return state == CampaignState.ACTIVE;
     }

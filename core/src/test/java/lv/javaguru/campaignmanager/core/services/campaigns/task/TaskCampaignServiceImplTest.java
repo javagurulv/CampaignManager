@@ -106,7 +106,6 @@ public class TaskCampaignServiceImplTest {
         assertThat(taskCampaign.getCampaign().isActive(), is(true));
     }
 
-
     @Test
     public void shouldNotAllowDeactivateWhenCampaignIsNull() {
         TaskCampaign taskCampaign = createTaskCampaign().build();
@@ -176,6 +175,75 @@ public class TaskCampaignServiceImplTest {
         service.deactivate(TASK_CAMPAIGN_ID);
 
         assertThat(taskCampaign.getCampaign().isNotActive(), is(true));
+    }
+
+    @Test
+    public void shouldNotAllowCloseWhenCampaignIsNull() {
+        TaskCampaign taskCampaign = createTaskCampaign().build();
+        assertThat(taskCampaign.getCampaign(), is(nullValue()));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("Campaign must be defined");
+        service.close(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowCloseWhenNoGroup() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(createCampaign()).build();
+        assertThat(taskCampaign.getCampaign().hasGroup(), is(false));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("Campaign Group must be defined");
+        service.close(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowCloseWhenCampaignInActiveState() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.ACTIVE)
+                ).build();
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("State Transition to CLOSED not allowed");
+        service.close(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldNotAllowCloseWhenCampaignInCLOSEDState() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.CLOSED)
+                ).build();
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        thrown.expect(IllegalStateException.class);
+        thrown.expectMessage("State Transition to CLOSED not allowed");
+        service.close(TASK_CAMPAIGN_ID);
+    }
+
+    @Test
+    public void shouldClose() {
+        TaskCampaign taskCampaign = createTaskCampaign()
+                .withCampaign(
+                        createCampaign()
+                                .with(createCampaignGroup())
+                                .withState(CampaignState.NOT_ACTIVE)
+                ).build();
+        assertThat(taskCampaign.getCampaign().isNotActive(), is(true));
+        doReturn(taskCampaign).when(entityRepository).getRequired(TaskCampaign.class, CAMPAIGN_ID);
+
+        service.close(TASK_CAMPAIGN_ID);
+
+        assertThat(taskCampaign.getCampaign().isClosed(), is(true));
     }
 
 }

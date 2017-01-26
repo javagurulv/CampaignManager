@@ -11,4 +11,6 @@ public interface TaskCampaignService {
 
     void deactivate(TaskCampaignId taskCampaignId);
 
+    void close(TaskCampaignId taskCampaignId);
+
 }

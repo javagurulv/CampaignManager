@@ -34,4 +34,12 @@ public class TaskCampaignServiceImpl implements TaskCampaignService {
         taskCampaign.getCampaign().deactivate();
     }
 
+    @Override
+    public void close(TaskCampaignId taskCampaignId) {
+        TaskCampaign taskCampaign = get(taskCampaignId);
+        checkState(taskCampaign.getCampaign() != null, "Campaign must be defined");
+        checkState(taskCampaign.getCampaign().hasGroup(), "Campaign Group must be defined");
+        taskCampaign.getCampaign().close();
+    }
+
 }

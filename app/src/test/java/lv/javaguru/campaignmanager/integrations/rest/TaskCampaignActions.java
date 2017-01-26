@@ -32,4 +32,8 @@ public class TaskCampaignActions {
         resource.deactivate(taskCampaign.getId());
     }
 
+    public void close(TaskCampaignDTO taskCampaign) {
+        resource.close(taskCampaign.getId());
+    }
+
 }

@@ -78,4 +78,15 @@ public class TaskCampaignResourceImplTest extends RESTResourceTest {
         assertThat(campaign.getCampaign().getState(), is(CampaignState.NOT_ACTIVE.toString()));
     }
 
+    @Test
+    public void shouldCloseTaskCampaign() {
+        CampaignGroupDTO group = createGroup();
+        TaskCampaignDTO campaign = createCampaign(group);
+        activateTaskCampaign(campaign);
+        deactivateTaskCampaign(campaign);
+        closeTaskCampaign(campaign);
+        campaign = getTaskCampaign(campaign.getId());
+        assertThat(campaign.getCampaign().getState(), is(CampaignState.CLOSED.toString()));
+    }
+
 }
