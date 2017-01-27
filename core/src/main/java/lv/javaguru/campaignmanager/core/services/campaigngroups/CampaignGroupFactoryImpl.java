@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
-import lv.javaguru.campaignmanager.api.vo.GroupTitle;
+import lv.javaguru.campaignmanager.core.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.domain.repositories.CampaignGroupRepository;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.domain.builders;
 
-import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
+import lv.javaguru.campaignmanager.core.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;

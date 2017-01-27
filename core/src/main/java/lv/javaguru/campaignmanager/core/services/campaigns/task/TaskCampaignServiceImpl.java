@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
-import lv.javaguru.campaignmanager.api.vo.TaskCampaignId;
+import lv.javaguru.campaignmanager.core.vo.TaskCampaignId;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;

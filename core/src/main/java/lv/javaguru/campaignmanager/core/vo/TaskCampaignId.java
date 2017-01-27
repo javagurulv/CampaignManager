@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.api.vo;
+package lv.javaguru.campaignmanager.core.vo;
 
 public class TaskCampaignId {
 

@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.campaigns.task;
 
-import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
-import lv.javaguru.campaignmanager.api.vo.CampaignTitle;
+import lv.javaguru.campaignmanager.core.vo.CampaignGroupId;
+import lv.javaguru.campaignmanager.core.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.DomainCommand;
 
 public class CreateTaskCampaignCommand

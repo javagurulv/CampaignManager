@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
-import lv.javaguru.campaignmanager.api.vo.CampaignGroupId;
-import lv.javaguru.campaignmanager.api.vo.GroupTitle;
+import lv.javaguru.campaignmanager.core.vo.CampaignGroupId;
+import lv.javaguru.campaignmanager.core.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import org.junit.Test;

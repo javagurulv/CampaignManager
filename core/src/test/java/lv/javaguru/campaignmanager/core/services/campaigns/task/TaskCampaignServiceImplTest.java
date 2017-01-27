@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigns.task;
 
-import lv.javaguru.campaignmanager.api.vo.TaskCampaignId;
+import lv.javaguru.campaignmanager.core.vo.TaskCampaignId;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
@@ -147,7 +147,7 @@ public class TaskCampaignServiceImplTest {
     }
 
     @Test
-    public void shouldNotAllowDeactivateWhenCampaignInNOT_ACTIVEState() {
+    public void shouldNotAllowDeactivateWhenCampaignInNOTACTIVEState() {
         TaskCampaign taskCampaign = createTaskCampaign()
                 .withCampaign(
                         createCampaign()

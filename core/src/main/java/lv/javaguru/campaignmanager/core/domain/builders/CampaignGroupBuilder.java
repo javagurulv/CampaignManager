@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.domain.builders;
 
-import lv.javaguru.campaignmanager.api.vo.GroupTitle;
+import lv.javaguru.campaignmanager.core.vo.GroupTitle;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 
 import java.util.Date;
