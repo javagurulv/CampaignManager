@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.api.dto.builders;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignDTO;
-import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.CampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.TaskCampaignDTO;
 
 import java.util.Date;
 

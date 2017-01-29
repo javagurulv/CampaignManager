@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.commands.campaigngroups;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.DomainCommandResult;
 
 import java.util.List;

@@ -1,9 +1,9 @@
 package lv.javaguru.campaignmanager.api.resources;
 
 import lv.javaguru.campaignmanager.api.RESTResource;
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-import lv.javaguru.campaignmanager.api.dto.CreateCampaignGroupRequest;
-import lv.javaguru.campaignmanager.api.dto.EditCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CreateCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.groups.EditCampaignGroupRequest;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.RESTResource;
-import lv.javaguru.campaignmanager.api.dto.CreateTaskCampaignRequest;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.CreateTaskCampaignRequest;
 import lv.javaguru.campaignmanager.core.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.core.vo.CampaignTitle;
 import lv.javaguru.campaignmanager.core.vo.TaskCampaignId;

@@ -24,6 +24,12 @@ subprojects {
     apply plugin: "jacoco"
     apply plugin: 'checkstyle'
 
+    idea {
+        module {
+            sourceDirs += file('generated/')
+            }
+    }
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -52,7 +58,10 @@ project(":core") {
         compile libs.liquibase
         compile libs.guava
         compile libs.spring_boot_starter_data_jpa
-        
+        compile libs.querydsl_core
+        compile libs.querydsl_jpa
+        compile libs.querydsl_apt
+
 	    testCompile libs.spring_boot_starter_test
     }
 }

@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.commands.campaigns.task;
 
-import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.TaskCampaignDTO;
 import lv.javaguru.campaignmanager.core.DomainCommandHandler;
 import lv.javaguru.campaignmanager.core.domain.TaskCampaign;
 import lv.javaguru.campaignmanager.core.services.campaigns.task.TaskCampaignFactory;

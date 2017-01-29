@@ -1,8 +1,8 @@
 package lv.javaguru.campaignmanager.api.resources;
 
 import lv.javaguru.campaignmanager.api.RESTResource;
-import lv.javaguru.campaignmanager.api.dto.CreateTaskCampaignRequest;
-import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.CreateTaskCampaignRequest;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.TaskCampaignDTO;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

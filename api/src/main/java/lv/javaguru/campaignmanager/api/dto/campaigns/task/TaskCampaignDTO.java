@@ -1,4 +1,6 @@
-package lv.javaguru.campaignmanager.api.dto;
+package lv.javaguru.campaignmanager.api.dto.campaigns.task;
+
+import lv.javaguru.campaignmanager.api.dto.campaigns.CampaignDTO;
 
 import java.io.Serializable;
 import java.util.Date;

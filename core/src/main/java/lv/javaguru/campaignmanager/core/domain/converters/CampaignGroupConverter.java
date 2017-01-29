@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.core.domain.converters;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import org.springframework.stereotype.Component;
 

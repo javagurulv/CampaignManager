@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.api.dto;
+package lv.javaguru.campaignmanager.api.dto.groups;
 
 import java.io.Serializable;
 

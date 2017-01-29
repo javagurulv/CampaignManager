@@ -5,7 +5,8 @@ ext {
 	    liquibase          : "3.5.3",
 	    guava              : "19.0",
         commons_lang       : "2.6",
-		feign              : "8.18.0"
+		feign              : "8.18.0",
+		querydsl		   : "4.1.4"
     ]
 
     libs = [
@@ -18,6 +19,9 @@ ext {
         commons_lang                            : "commons-lang:commons-lang:$versions.commons_lang",
         feign_core                              : "com.netflix.feign:feign-core:$versions.feign",
         feign_jackson                           : "com.netflix.feign:feign-jackson:$versions.feign",
- 		feign_jaxrs                             : "com.netflix.feign:feign-jaxrs:$versions.feign"
+ 		feign_jaxrs                             : "com.netflix.feign:feign-jaxrs:$versions.feign",
+		querydsl_core								: "com.querydsl:querydsl-core:$versions.querydsl",
+		querydsl_jpa								: "com.querydsl:querydsl-jpa:$versions.querydsl",
+		querydsl_apt								: "com.querydsl:querydsl-apt:$versions.querydsl:jpa"
      ]
 }

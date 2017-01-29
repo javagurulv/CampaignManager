@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.core.commands.campaigns;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignDTO;
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.CampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
 import lv.javaguru.campaignmanager.core.domain.Campaign;
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;

@@ -1,7 +1,7 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-import lv.javaguru.campaignmanager.api.dto.TaskCampaignDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.campaigns.task.TaskCampaignDTO;
 import lv.javaguru.campaignmanager.core.domain.CampaignState;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Ignore;

@@ -1,14 +1,12 @@
-package lv.javaguru.campaignmanager.api.dto;
+package lv.javaguru.campaignmanager.api.dto.groups;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class CampaignDTO implements Serializable {
+public class CampaignGroupDTO implements Serializable {
 
     private Long id;
     private String title;
-    private String state;
-    private CampaignGroupDTO campaignGroupDTO;
     private Date createdDate;
     private Date updatedDate;
 
@@ -27,22 +25,6 @@ public class CampaignDTO implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public CampaignGroupDTO getCampaignGroupDTO() {
-        return campaignGroupDTO;
-    }
-
-    public void setCampaignGroupDTO(CampaignGroupDTO campaignGroupDTO) {
-        this.campaignGroupDTO = campaignGroupDTO;
     }
 
     public Date getCreatedDate() {

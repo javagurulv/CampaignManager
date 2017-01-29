@@ -1,9 +1,9 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
 import lv.javaguru.campaignmanager.api.resources.CampaignGroupResource;
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
-import lv.javaguru.campaignmanager.api.dto.CreateCampaignGroupRequest;
-import lv.javaguru.campaignmanager.api.dto.EditCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CreateCampaignGroupRequest;
+import lv.javaguru.campaignmanager.api.dto.groups.EditCampaignGroupRequest;
 
 public class CampaignGroupActions {
 

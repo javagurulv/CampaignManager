@@ -1,6 +1,6 @@
 package lv.javaguru.campaignmanager.integrations.rest;
 
-import lv.javaguru.campaignmanager.api.dto.CampaignGroupDTO;
+import lv.javaguru.campaignmanager.api.dto.groups.CampaignGroupDTO;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Ignore;
 import org.junit.Rule;
