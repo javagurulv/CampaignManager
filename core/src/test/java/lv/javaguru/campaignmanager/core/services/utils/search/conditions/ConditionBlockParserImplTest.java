@@ -1,4 +1,4 @@
-package lv.javaguru.campaignmanager.core.services.utils.search.ordering;
+package lv.javaguru.campaignmanager.core.services.utils.search.conditions;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -13,9 +13,9 @@ import static org.junit.Assert.assertThat;
 import static lv.javaguru.campaignmanager.core.services.utils.search.model.AllowedFieldsBuilder.createAllowedFields;
 import static lv.javaguru.campaignmanager.core.services.utils.search.model.SearchParametersBuilder.createSearchParameters;
 
-public class OrderingBlockParserTest {
+public class ConditionBlockParserImplTest {
 
-    private OrderingBlockParser parser = new OrderingBlockParser();
+    private ConditionBlockParserImpl parser = new ConditionBlockParserImpl();
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -23,58 +23,62 @@ public class OrderingBlockParserTest {
 
     @Test
     public void parseOneField() {
-        OrderingBlock block = parser.parse(
+        ConditionBlock block = parser.parse(
                 createSearchParameters()
                         .with(createAllowedFields()
                                 .with(new SearchField("title", StringConverter.INSTANCE))
                         )
-                        .withOrdering("{title:asc}")
+                        .withConditions("{title:eq:aaa}")
                         .build()
         );
         assertThat(block.getItems().size(), is(1));
         assertThat(block.getItems().get(0).getField(), is("title"));
-        assertThat(block.getItems().get(0).getOrderType(), is(OrderType.ASC));
+        assertThat(block.getItems().get(0).getOperation(), is(ConditionType.EQ));
+        assertThat(block.getItems().get(0).getValue(), is("aaa"));
     }
 
     @Test
     public void parseTwoFields() {
-        OrderingBlock block = parser.parse(
+        ConditionBlock block = parser.parse(
                 createSearchParameters()
                         .with(createAllowedFields()
                                 .with(new SearchField("title", StringConverter.INSTANCE))
                                 .with(new SearchField("id", LongConverter.INSTANCE))
                         )
-                        .withOrdering("{title:asc}{id:desc}")
+                        .withConditions("{title:eq:aaa}{id:le:111}")
                         .build()
         );
         assertThat(block.getItems().size(), is(2));
         assertThat(block.getItems().get(0).getField(), is("title"));
-        assertThat(block.getItems().get(0).getOrderType(), is(OrderType.ASC));
+        assertThat(block.getItems().get(0).getOperation(), is(ConditionType.EQ));
+        assertThat(block.getItems().get(0).getValue(), is("aaa"));
         assertThat(block.getItems().get(1).getField(), is("id"));
-        assertThat(block.getItems().get(1).getOrderType(), is(OrderType.DESC));
+        assertThat(block.getItems().get(1).getOperation(), is(ConditionType.LE));
+        assertThat(block.getItems().get(1).getValue(), is("111"));
     }
 
     @Test
     public void shouldThrowExceptionWhenParseOneField() {
         thrown.expect(ParsingException.class);
-        thrown.expectMessage("Incorrect ordering section: " + "{title:asc");
+        thrown.expectMessage("Incorrect conditions section: " + "{title:asc");
         parser.parse(
                 createSearchParameters()
-                        .withOrdering("{title:asc")
+                        .withConditions("{title:asc")
                         .build()
+
         );
     }
 
     @Test
     public void shouldThrowExceptionWhenParseTwoFields() {
         thrown.expect(ParsingException.class);
-        thrown.expectMessage("Incorrect ordering section: " + "{id");
+        thrown.expectMessage("Incorrect conditions section: " + "{id");
         parser.parse(
                 createSearchParameters()
                         .with(createAllowedFields()
                                 .with(new SearchField("title", StringConverter.INSTANCE))
                         )
-                        .withOrdering("{title:asc}{id")
+                        .withConditions("{title:le:abc}{id")
                         .build()
         );
     }

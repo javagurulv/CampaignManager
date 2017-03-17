@@ -15,8 +15,8 @@ import static lv.javaguru.campaignmanager.core.services.utils.search.model.Searc
 @Component
 class SearchCriteriaParserImpl implements SearchCriteriaParser {
 
-    private ConditionBlockParser conditionsParser = new ConditionBlockParser();
-    private OrderingBlockParser orderingParser = new OrderingBlockParser();
+    @Autowired private ConditionBlockParser conditionsParser;
+    @Autowired private OrderingBlockParser orderingParser;
     @Autowired private PagingBlockParser pagingParser;
 
     @Override

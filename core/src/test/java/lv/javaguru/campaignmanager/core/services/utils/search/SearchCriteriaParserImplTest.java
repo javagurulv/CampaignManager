@@ -1,9 +1,13 @@
 package lv.javaguru.campaignmanager.core.services.utils.search;
 
+import lv.javaguru.campaignmanager.core.services.utils.search.conditions.ConditionBlock;
+import lv.javaguru.campaignmanager.core.services.utils.search.conditions.ConditionBlockParser;
 import lv.javaguru.campaignmanager.core.services.utils.search.converters.StringConverter;
 import lv.javaguru.campaignmanager.core.services.utils.search.model.SearchCriteria;
 import lv.javaguru.campaignmanager.core.services.utils.search.model.SearchField;
 import lv.javaguru.campaignmanager.core.services.utils.search.model.SearchParameters;
+import lv.javaguru.campaignmanager.core.services.utils.search.ordering.OrderingBlock;
+import lv.javaguru.campaignmanager.core.services.utils.search.ordering.OrderingBlockParser;
 import lv.javaguru.campaignmanager.core.services.utils.search.paging.PagingBlock;
 import lv.javaguru.campaignmanager.core.services.utils.search.paging.PagingBlockParser;
 import org.junit.Test;
@@ -23,6 +27,8 @@ import static org.mockito.Mockito.mock;
 @RunWith(MockitoJUnitRunner.class)
 public class SearchCriteriaParserImplTest {
 
+    @Mock private ConditionBlockParser conditionsParser;
+    @Mock private OrderingBlockParser orderingParser;
     @Mock private PagingBlockParser pagingBlockParser;
 
     @InjectMocks
@@ -31,32 +37,38 @@ public class SearchCriteriaParserImplTest {
 
     @Test
     public void parseConditionsBlock() {
-        SearchCriteria searchCriteria = parser.parse(
-                createSearchParameters()
-                        .with(createAllowedFields()
-                                .with(new SearchField("title", StringConverter.INSTANCE))
-                        )
-                        .withConditions("{title:eq:aaa}")
-                    .build()
-        );
+        SearchParameters parameters = createSearchParameters()
+                .with(createAllowedFields()
+                        .with(new SearchField("title", StringConverter.INSTANCE))
+                )
+                .withConditions("{title:eq:aaa}").build();
+        ConditionBlock conditionBlock = mock(ConditionBlock.class);
+        doReturn(conditionBlock).when(conditionsParser).parse(parameters);
+
+        SearchCriteria searchCriteria = parser.parse(parameters);
+
         assertThat(searchCriteria.containsConditions(), is(true));
         assertThat(searchCriteria.containsOrdering(), is(false));
         assertThat(searchCriteria.containsPaging(), is(false));
+        assertThat(searchCriteria.getConditions(), is(sameInstance(conditionBlock)));
     }
 
     @Test
     public void parseOrderingBlock() {
-        SearchCriteria searchCriteria = parser.parse(
-                createSearchParameters()
-                        .with(createAllowedFields()
-                                .with(new SearchField("title", StringConverter.INSTANCE))
-                        )
-                        .withOrdering("{title:asc}")
-                        .build()
-        );
+        SearchParameters parameters = createSearchParameters()
+                .with(createAllowedFields()
+                        .with(new SearchField("title", StringConverter.INSTANCE))
+                )
+                .withOrdering("{title:asc}").build();
+        OrderingBlock orderingBlock = mock(OrderingBlock.class);
+        doReturn(orderingBlock).when(orderingParser).parse(parameters);
+
+        SearchCriteria searchCriteria = parser.parse(parameters);
+
         assertThat(searchCriteria.containsConditions(), is(false));
         assertThat(searchCriteria.containsOrdering(), is(true));
         assertThat(searchCriteria.containsPaging(), is(false));
+        assertThat(searchCriteria.getOrdering(), is(sameInstance(orderingBlock)));
     }
 
     @Test
