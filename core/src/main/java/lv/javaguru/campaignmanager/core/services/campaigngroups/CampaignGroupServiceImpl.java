@@ -1,7 +1,6 @@
 package lv.javaguru.campaignmanager.core.services.campaigngroups;
 
 import lv.javaguru.campaignmanager.core.domain.CampaignGroup;
-import lv.javaguru.campaignmanager.core.domain.repositories.CampaignGroupRepository;
 import lv.javaguru.campaignmanager.core.domain.repositories.EntityRepository;
 import lv.javaguru.campaignmanager.core.vo.CampaignGroupId;
 import lv.javaguru.campaignmanager.core.vo.GroupTitle;
@@ -15,7 +14,6 @@ class CampaignGroupServiceImpl implements CampaignGroupService {
 
     @Autowired private CampaignGroupValidator validator;
     @Autowired private EntityRepository entityRepository;
-    @Autowired private CampaignGroupRepository campaignGroupRepository;
 
     @Override
     public CampaignGroup get(CampaignGroupId campaignGroupId) {
